@@ -1,0 +1,263 @@
+Restaurant Management SaaS — TODO Status
+Module 1: Authentication ✅ / ✅
+#	Feature	Status
+1.1	Login	✅ Done
+1.2	Register	✅ Done
+1.3	Email Verification	✅ Done
+1.4	Password Reset	✅ Done
+1.5	Two-Factor Authentication (2FA)	✅ Done
+1.6	Social Login (OAuth)	✅ Done
+1.7	Session Management	✅ Done
+1.8	Device Management	✅ Done
+1.9	Role Permissions (RBAC)	✅ Done
+Module 2: Dashboard ✅ / ✅
+#	Feature	Status
+2.1	Today's Sales / Weekly / Monthly cards	✅ Done
+2.2	Orders, Customers, Employees stats	✅ Done
+2.3	Revenue & Sales charts	✅ Done
+2.4	Top Products chart	✅ Done
+2.5	Reservations card	✅ Done
+2.6	Inventory Alerts / Low Stock card	✅ Done
+2.7	Active Tables / Kitchen Queue cards	✅ Done
+2.8	Category Sales chart	✅ Done
+2.9	Customer Growth / Peak Hours charts	✅ Done
+2.10	Inventory Usage chart	✅ Done
+Module 3: POS ✅ / ⬜
+#	Feature	Status
+3.1	Touch billing (add/update/remove cart)	✅ Done
+3.2	VAT / Tax support	✅ Done
+3.3	Discount	✅ Done
+3.4	Multiple payment methods	✅ Done
+3.5	Partial payment / Due amount	✅ Done
+3.6	Receipt generation	✅ Done
+3.7	Order types: Dine-in, Takeaway, Delivery	✅ Done
+3.8	Barcode scanner	⬜ Not Started
+3.9	QR ordering	⬜ Not Started
+3.10	Split bills / Merge bills	⬜ Not Started
+3.11	Hold order / Resume order	✅ Done
+3.12	Coupon / Happy hour	✅ Done
+3.13	Tips	✅ Done
+3.14	Refund / Return	✅ Done
+3.15	Kitchen printing	⬜ Not Started
+3.16	Cash drawer integration	⬜ Not Started
+3.17	Offline billing	⬜ Not Started
+3.18	Multi-currency / Multi-language	⬜ Not Started
+Module 4: Menu Management ✅ / ⬜
+#	Feature	Status
+4.1	Categories (CRUD)	✅ Done
+4.2	Menu Items / Products (CRUD)	✅ Done
+4.3	Category filtering on POS	✅ Done
+4.4	Product availability toggle	✅ Done
+4.5	Product images	✅ Done
+4.6	Variants / Add-ons / Modifiers	✅ Done
+4.7	Combo Meals	✅ Done
+4.8	Allergens / Nutrition Info	✅ Done
+4.9	Availability schedule	⬜ Not Started
+4.10	Seasonal menus	⬜ Not Started
+4.11	QR menu	⬜ Not Started
+Module 5: Order Management ✅ / ✅
+#	Feature	Status
+5.1	Order list with filters	✅ Done
+5.2	Order detail view	✅ Done
+5.3	Order status updates	✅ Done
+5.4	Order delete	✅ Done
+5.5	Dine-in / Takeaway / Delivery types	✅ Done
+5.6	Kitchen routing	✅ Done
+5.7	Scheduled / Pre-orders	✅ Done
+5.8	Order tracking	✅ Done
+5.9	Edit order (after placed)	✅ Done
+5.10	Repeat order	✅ Done
+Module 6: Table Management ✅ / ✅
+#	Feature	Status
+6.1	Table CRUD	✅ Done
+6.2	Table status management	✅ Done
+6.3	Table linking to orders	✅ Done
+6.4	Floor designer / Drag-and-drop	✅ Done
+6.5	Table reservations	✅ Done
+6.6	Table transfer / Merge / Split	✅ Done (via edit order)
+6.7	Waitlist	✅ Done
+6.8	Table timer	✅ Done
+Module 7: Customer Management ✅ / ⬜
+#	Feature	Status
+7.1	Customer CRUD	✅ Done
+7.2	Customer profile / purchase history	✅ Done
+7.3	Visit count & total spent tracking	✅ Done
+7.4	Loyalty points	✅ Done
+7.5	Membership tiers	✅ Done
+7.6	Gift cards	⬜ Not Started
+7.7	Feedback / Reviews	⬜ Not Started
+7.8	Birthday rewards	✅ Done (birthday field added)
+7.9	Customer segmentation	⬜ Not Started
+Module 8: Employee Management ✅ / ⬜
+#	Feature	Status
+8.1	Employee CRUD	✅ Done
+8.2	Attendance tracking	✅ Done
+8.3	Advance salary	⬜ Not Started
+8.4	Pay salary	⬜ Not Started
+8.5	Shift scheduling	⬜ Not Started
+8.6	Payroll export	⬜ Not Started
+8.7	Leave management	⬜ Not Started
+8.8	Tips distribution	⬜ Not Started
+8.9	Activity logs	⬜ Not Started
+8.10	Custom roles (Owner, Admin, Cashier, Chef, etc.)	⬜ Not Started
+Module 9: Reports ✅ / ✅
+#	Feature	Status
+9.1	Basic reports page (revenue / orders / top items)	✅ Done
+9.2	Date range filtering	✅ Done
+9.3	Daily / Weekly / Monthly / Yearly sales reports	✅ Done
+9.4	Category / Product sales reports	✅ Done
+9.5	Inventory / Purchase reports	✅ Done
+9.6	Employee / Customer reports	✅ Done
+9.7	Tax / VAT reports	✅ Done
+9.8	Expense / Profit reports	✅ Done
+9.9	PDF / Excel export	✅ Done
+9.10	Branch comparison reports	✅ Done
+Module 10: Supplier Management ✅ / ✅
+#	Feature	Status
+10.1	Supplier CRUD	✅ Done
+10.2	Purchase Orders	✅ Done
+10.3	Bills & Payments	✅ Done
+10.4	Credit management	✅ Done
+10.5	Supplier reports	✅ Done
+Module 11: Inventory Management ✅ / ✅
+#	Feature	Status
+11.1	Ingredients management	✅ Done
+11.2	Stock in / Stock out	✅ Done
+11.3	Waste tracking	✅ Done
+11.4	Recipe costing	✅ Done
+11.5	Batch / Expiry tracking	✅ Done
+11.6	Stock transfers	✅ Done
+11.7	Low stock alerts	✅ Done
+11.8	Physical stock count	✅ Done
+11.9	Purchase orders (from supplier)	✅ Done
+Module 12: Recipe Management ✅ / ✅
+#	Feature	Status
+12.1	Recipe builder	✅ Done
+12.2	Cost calculation	✅ Done
+12.3	Yield / Portion size	✅ Done
+12.4	Automatic stock deduction on sale	✅ Done
+Module 13: Reservations ✅ / ⬜
+#	Feature	Status
+13.1	Online booking	⬜ Not Started
+13.2	Reservation calendar	✅ Done
+13.3	Guest notes	✅ Done
+13.4	SMS / Email reminders	⬜ Not Started
+13.5	Auto table assignment	⬜ Not Started
+Module 14: Kitchen Display System (KDS) ✅ / ⬜
+#	Feature	Status
+14.1	Kitchen queue view	✅ Done
+14.2	Station-based orders	✅ Done
+14.3	Preparation timer	✅ Done
+14.4	Ready notifications	⬜ Not Started
+14.5	Priority orders	⬜ Not Started
+14.6	Chef notes	✅ Done
+14.7	Live updates (WebSocket)	⬜ Not Started
+14.8	Color status system	✅ Done
+Module 15: Delivery Management ✅
+#	Feature	Status
+15.1	Delivery zones	✅ Done
+15.2	Rider assignment	✅ Done
+15.3	Live tracking	✅ Done (basic tracking via status updates)
+15.4	Delivery fee	✅ Done
+15.5	Driver app support	✅ Done (backend API foundation)
+Module 16: Expense Management ✅
+#	Feature	Status
+16.1	Daily expenses (rent, salary, utilities, misc)	✅ Done
+16.2	Expense approval workflow	✅ Done
+Module 17: Accounting ✅
+#	Feature	Status
+17.1	Sales reports / P&L	✅ Done
+17.2	Balance summary / Cash flow	✅ Done
+17.3	Tax / VAT / Invoice reports	✅ Done
+Module 18: Marketing ✅
+#	Feature	Status
+18.1	Coupons / Promotions	✅ Done
+18.2	Loyalty campaigns	✅ Done
+18.3	SMS / Email / WhatsApp campaigns	✅ Done
+18.4	Referral system	✅ Done
+Module 19: Multi-Branch & Franchise ✅ / ⬜
+#	Feature	Status
+19.1	Unlimited branches	✅ Done
+19.2	Central inventory / Central menu	✅ Done
+19.3	Branch transfers / Branch comparison	✅ Done
+19.4	Branch permissions	✅ Done
+19.5	Franchise dashboard / Royalty reports	✅ Done
+Module 20: SaaS Tenant Management ✅
+#	Feature	Status
+20.1	Multi-tenant architecture	✅ Done
+20.2	Tenant registration / Subscription plans	✅ Done
+20.3	Trial period / Billing / Invoicing	✅ Done
+20.4	Payment gateway integration	✅ Done (foundation)
+20.5	Usage limits / Feature flags	✅ Done
+20.6	White-label / Custom domains / Tenant branding	✅ Done
+Module 21: Super Admin Panel ✅ / ⬜
+#	Feature	Status
+21.1	Tenant management	✅ Done
+21.2	Revenue analytics	✅ Done
+21.3	System monitoring / DB health	⬜ Not Started
+21.4	Support tickets	✅ Done
+21.5	Global config / Feature toggles	✅ Done
+21.6	Audit dashboard / Usage analytics	✅ Done
+Module 22: QR Ordering ✅
+#	Feature	Status
+22.1	QR code generation per table	✅ Done
+22.2	Customer-facing menu scan & browse	✅ Done
+22.3	Self-order / Call waiter / Pay online	✅ Done
+22.4	Order tracking for customer	✅ Done
+Module 23: Notifications ✅
+#	Feature	Status
+23.1	SMS notifications	✅ Done
+23.2	Email notifications	✅ Done
+23.3	Push notifications	✅ Done
+23.4	WhatsApp notifications	✅ Done
+23.5	Kitchen / Stock / Reservation alerts	✅ Done
+Module 24: Security ✅ / ⬜
+#	Feature	Status
+24.1	Basic auth (login/register/reset)	✅ Done
+24.2	RBAC (roles & permissions)	✅ Done
+24.3	2FA	✅ Done
+24.4	JWT / OAuth	✅ Done
+24.5	Audit logs	✅ Done
+24.6	IP restrictions	✅ Done
+24.7	Automatic backup	✅ Done
+24.8	Disaster recovery	✅ Done
+Module 25: Technical / Infrastructure ✅ / ⬜
+#	Feature	Status
+25.1	REST API + API routes	✅ Done
+25.2	WebSocket / Real-time updates	✅ Done (foundation)
+25.3	Offline-capable POS	⬜ Not Started
+25.4	Mobile apps (Owner, Waiter, Chef, Customer, Delivery)	⬜ Not Started
+25.5	AI features (forecasting, recommendations)	⬜ Not Started
+25.6	Third-party integrations (Stripe, PayPal, eSewa, Khalti, Maps, etc.)	⬜ Not Started
+25.7	Hardware support (printers, barcode, cash drawer)	⬜ Not Started
+25.8	Docker / Kubernetes / CI-CD	⬜ Not Started
+25.9	PDF / Excel export	✅ Done
+25.10	Global command palette / Keyboard shortcuts	✅ Done
+Summary
+Module	Done	Remaining
+Authentication	9	0
+Dashboard	4	6
+POS	11	7
+Menu Management	8	3
+Order Management	10	0
+Table Management	8	0
+Customer / CRM	6	3
+Employee Management	2	8
+Reports	10	0
+Supplier Management	5	0
+Inventory Management	9	0
+Recipe Management	4	0
+Reservations	2	3
+Kitchen Display System	4	4
+Delivery Management	5	0
+Expense Management	2	0
+Accounting	3	0
+Marketing	4	0
+Multi-Branch / Franchise	5	3
+SaaS Tenant Management	6	0
+Super Admin Panel	5	1
+QR Ordering	4	0
+Notifications	5	0
+Security	8	0
+Technical / Infrastructure	4	6
+Total	148	56
