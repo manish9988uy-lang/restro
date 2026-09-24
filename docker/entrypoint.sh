@@ -2,9 +2,11 @@
 set -e
 
 # Default settings
+export APP_DEBUG=${APP_DEBUG:-true}
 export LOG_CHANNEL=${LOG_CHANNEL:-stderr}
 export SESSION_DRIVER=${SESSION_DRIVER:-file}
 export CACHE_STORE=${CACHE_STORE:-file}
+export QUEUE_CONNECTION=${QUEUE_CONNECTION:-sync}
 
 # Fallback APP_KEY if not provided
 if [ -z "$APP_KEY" ]; then
@@ -30,21 +32,14 @@ chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache /
 # Link storage
 php artisan storage:link || true
 
+# Clear all previous caches so live env is used
+echo "Clearing optimization caches..."
+php artisan optimize:clear || true
+
 # Run database migrations and seeders safely
 echo "Checking database, running migrations and seeders..."
 php artisan migrate --force || true
 php artisan db:seed --force || true
-
-# Clear all previous caches
-php artisan optimize:clear || true
-
-# Cache configs
-if [ "$APP_ENV" = "production" ]; then
-    echo "Caching Laravel configuration..."
-    php artisan config:cache || true
-    php artisan route:cache || true
-    php artisan view:cache || true
-fi
 
 # Configure Nginx port dynamically (Render default is 10000, Koyeb is 8080)
 PORT=${PORT:-8080}
