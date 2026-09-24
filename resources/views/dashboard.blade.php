@@ -13,7 +13,7 @@
                 </div>
                 <span class="stat-label">Today's Revenue</span>
             </div>
-            <div class="stat-value">${{ number_format($todayRevenue, 2) }}</div>
+            <div class="stat-value">Rs. {{ number_format($todayRevenue, 2) }}</div>
             <div class="stat-change text-success mt-1"><i class="bi bi-arrow-up-short"></i> Sales today</div>
         </div>
     </div>
@@ -267,7 +267,7 @@
                         <div class="fw-600 small">{{ $item->name }}</div>
                         <div class="text-muted" style="font-size:.75rem;">{{ $item->total_qty }} sold</div>
                     </div>
-                    <div class="fw-700 text-success small">${{ number_format($item->revenue, 2) }}</div>
+                    <div class="fw-700 text-success small">Rs. {{ number_format($item->revenue, 2) }}</div>
                 </div>
                 @empty
                 <div class="text-center py-4 text-muted small">No sales data yet</div>
@@ -290,7 +290,7 @@ new Chart(document.getElementById('revenueChart'), {
     data: {
         labels: chartLabels,
         datasets: [{
-            label: 'Revenue ($)',
+            label: 'Revenue (Rs.)',
             data: chartData,
             backgroundColor: 'rgba(255,107,53,.15)',
             borderColor: '#FF6B35',
@@ -303,7 +303,7 @@ new Chart(document.getElementById('revenueChart'), {
         responsive: true,
         plugins: { legend: { display: false } },
         scales: {
-            y: { beginAtZero: true, grid: { color: '#f0f2f5' }, ticks: { callback: v => '$' + v } },
+            y: { beginAtZero: true, grid: { color: '#f0f2f5' }, ticks: { callback: v => 'Rs. ' + v } },
             x: { grid: { display: false } }
         }
     }

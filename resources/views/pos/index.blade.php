@@ -183,7 +183,7 @@
                 <div class="menu-info">
                     <div class="menu-name">{{ $item->name }}</div>
                     <div class="d-flex align-items-center justify-content-between mt-1">
-                        <div class="menu-price">${{ number_format($item->price, 2) }}</div>
+                        <div class="menu-price">Rs. {{ number_format($item->price, 2) }}</div>
                         @if($item->is_featured)
                         <span class="badge bg-warning text-dark menu-badge">Featured</span>
                         @endif
@@ -286,7 +286,7 @@
             <div class="cart-item" id="cart-item-{{ $item['menu_item_id'] }}">
                 <div class="flex-grow-1">
                     <div class="cart-item-name">{{ $item['name'] }}</div>
-                    <div class="cart-item-price">${{ number_format($item['price'], 2) }} each</div>
+                    <div class="cart-item-price">Rs. {{ number_format($item['price'], 2) }} each</div>
                 </div>
                 <div class="d-flex align-items-center gap-1">
                     <button class="qty-btn" onclick="updateQty({{ $item['menu_item_id'] }}, {{ $item['quantity'] - 1 }})">
@@ -297,7 +297,7 @@
                         <i class="bi bi-plus"></i>
                     </button>
                 </div>
-                <div class="cart-item-total">${{ number_format($item['subtotal'], 2) }}</div>
+                <div class="cart-item-total">Rs. {{ number_format($item['subtotal'], 2) }}</div>
                 <i class="bi bi-x-circle cart-remove" onclick="removeItem({{ $item['menu_item_id'] }})"></i>
             </div>
             @endforeach
@@ -308,22 +308,22 @@
         <div class="cart-footer">
             <div class="totals-row">
                 <span class="text-muted">Subtotal</span>
-                <span id="subtotalDisplay">${{ number_format($cartTotal, 2) }}</span>
+                <span id="subtotalDisplay">Rs. {{ number_format($cartTotal, 2) }}</span>
             </div>
             <div class="totals-row">
                 <span class="text-muted">VAT ({{ $vatRate }}%)</span>
-                <span id="vatDisplay">${{ number_format($vat, 2) }}</span>
+                <span id="vatDisplay">Rs. {{ number_format($vat, 2) }}</span>
             </div>
             @if($couponDiscount)
             <div class="totals-row text-success">
                 <span>Coupon ({{ $appliedCoupon['code'] }})</span>
-                <span>-${{ number_format($couponDiscount, 2) }}</span>
+                <span>-Rs. {{ number_format($couponDiscount, 2) }}</span>
             </div>
             @endif
             <div class="totals-row">
                 <span class="text-muted">Discount</span>
-                <div class="input-group input-group-sm" style="width:110px;">
-                    <span class="input-group-text" style="border-radius:8px 0 0 8px;font-size:.75rem;">$</span>
+                <div class="input-group input-group-sm" style="width:120px;">
+                    <span class="input-group-text" style="border-radius:8px 0 0 8px;font-size:.75rem;">Rs.</span>
                     <input type="number" id="discountInput" class="form-control form-control-sm"
                            min="0" step="0.01" value="0" style="border-radius:0 8px 8px 0;font-size:.8rem;"
                            oninput="recalcTotal()"/>
@@ -331,8 +331,8 @@
             </div>
             <div class="totals-row">
                 <span class="text-muted">Tip</span>
-                <div class="input-group input-group-sm" style="width:110px;">
-                    <span class="input-group-text" style="border-radius:8px 0 0 8px;font-size:.75rem;">$</span>
+                <div class="input-group input-group-sm" style="width:120px;">
+                    <span class="input-group-text" style="border-radius:8px 0 0 8px;font-size:.75rem;">Rs.</span>
                     <input type="number" id="tipInput" class="form-control form-control-sm"
                            min="0" step="0.01" value="0" style="border-radius:0 8px 8px 0;font-size:.8rem;"
                            oninput="recalcTotal()"/>
@@ -340,7 +340,7 @@
             </div>
             <div class="totals-row grand">
                 <span>Total</span>
-                <span id="grandTotalDisplay">${{ number_format($grandTotal, 2) }}</span>
+                <span id="grandTotalDisplay">Rs. {{ number_format($grandTotal, 2) }}</span>
             </div>
 
             <!-- Payment -->
@@ -350,14 +350,19 @@
                         <option value="">Payment Method</option>
                         <option value="cash">💵 Cash</option>
                         <option value="card">💳 Card</option>
-                        <option value="online">📱 Online</option>
+                        <option value="online">📱 Online (eSewa/Khalti)</option>
                         <option value="wallet">👛 Wallet</option>
                     </select>
                 </div>
                 <div class="col-6">
                     <div class="input-group input-group-sm">
-                        <span class="input-group-text" style="border-radius:8px 0 0 8px;font-size:.75rem;">$</span>
+                        <span class="input-group-text" style="border-radius:8px 0 0 8px;font-size:.75rem;">Rs.</span>
                         <input type="number" id="payAmount" class="form-control form-control-sm"
+                               placeholder="Pay amount" min="0" step="0.01"
+                               style="border-radius:0 8px 8px 0;font-size:.8rem;"/>
+                    </div>
+                </div>
+            </div>
                                placeholder="Pay amount" min="0" step="0.01"
                                style="border-radius:0 8px 8px 0;font-size:.8rem;"/>
                     </div>
@@ -463,8 +468,8 @@
         const vat      = parseFloat((subtotal * vatRate / 100).toFixed(2));
         const totalDiscount = Math.max(discount, couponDiscount);
         const grand    = Math.max(0, subtotal + vat - totalDiscount + tip);
-        document.getElementById('vatDisplay').textContent          = '$' + vat.toFixed(2);
-        document.getElementById('grandTotalDisplay').textContent   = '$' + grand.toFixed(2);
+        document.getElementById('vatDisplay').textContent          = 'Rs. ' + vat.toFixed(2);
+        document.getElementById('grandTotalDisplay').textContent   = 'Rs. ' + grand.toFixed(2);
         document.getElementById('discountFormInput').value         = discount;
         document.getElementById('tipFormInput').value              = tip;
     }
