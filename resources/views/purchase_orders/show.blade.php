@@ -56,7 +56,7 @@
                     </div>
                     <div class="col-6 col-md-3">
                         <small class="text-muted d-block">Total Amount</small>
-                        <strong class="text-success fs-5">${{ number_format($purchaseOrder->total_amount, 2) }}</strong>
+                        <strong class="text-success fs-5">Rs. {{ number_format($purchaseOrder->total_amount, 2) }}</strong>
                     </div>
                 </div>
 
@@ -80,15 +80,15 @@
                                 <td class="fw-bold">{{ $item->ingredient->name ?? 'Deleted Item' }}</td>
                                 <td>{{ $item->ingredient->unit ?? '-' }}</td>
                                 <td>{{ number_format($item->quantity, 3) }}</td>
-                                <td>${{ number_format($item->unit_price, 2) }}</td>
-                                <td class="text-end fw-bold">${{ number_format($item->subtotal, 2) }}</td>
+                                <td>Rs. {{ number_format($item->unit_price, 2) }}</td>
+                                <td class="text-end fw-bold">Rs. {{ number_format($item->subtotal, 2) }}</td>
                             </tr>
                             @endforeach
                         </tbody>
                         <tfoot>
                             <tr>
                                 <td colspan="5" class="text-end fw-bold">Grand Total:</td>
-                                <td class="text-end fw-bold fs-5 text-primary">${{ number_format($purchaseOrder->total_amount, 2) }}</td>
+                                <td class="text-end fw-bold fs-5 text-primary">Rs. {{ number_format($purchaseOrder->total_amount, 2) }}</td>
                             </tr>
                         </tfoot>
                     </table>
@@ -130,7 +130,7 @@
                                 <td class="ps-3">{{ $pmt->payment_date }}</td>
                                 <td><span class="badge bg-light text-dark border">{{ ucfirst($pmt->payment_method) }}</span></td>
                                 <td>{{ $pmt->reference ?? '-' }}</td>
-                                <td class="pe-3 text-end fw-bold text-success">${{ number_format($pmt->amount, 2) }}</td>
+                                <td class="pe-3 text-end fw-bold text-success">Rs. {{ number_format($pmt->amount, 2) }}</td>
                             </tr>
                             @empty
                             <tr><td colspan="4" class="text-center py-3 text-muted">No payments recorded for this PO yet.</td></tr>
@@ -183,7 +183,7 @@
                     <div class="mb-3">
                         <label class="form-label fw-medium">Remaining Due ($)</label>
                         <div class="form-control bg-light fw-bold text-danger">
-                            ${{ number_format($purchaseOrder->total_amount - $purchaseOrder->paid_amount, 2) }}
+                            Rs. {{ number_format($purchaseOrder->total_amount - $purchaseOrder->paid_amount, 2) }}
                         </div>
                     </div>
                     <div class="mb-3">

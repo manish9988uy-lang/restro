@@ -34,7 +34,7 @@
                 <div class="row mb-4">
                     <div class="col-md-4">
                         <span class="text-muted small">Delivery Fee</span>
-                        <div class="fw-700 fs-4 text-primary">${{ number_format($delivery->delivery_fee, 2) }}</div>
+                        <div class="fw-700 fs-4 text-primary">Rs. {{ number_format($delivery->delivery_fee, 2) }}</div>
                     </div>
                     <div class="col-md-4">
                         <span class="text-muted small">Status</span>

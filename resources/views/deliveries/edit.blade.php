@@ -23,7 +23,7 @@
                                 <option value="">Select Order</option>
                                 @foreach($orders as $order)
                                     <option value="{{ $order->id }}" @selected(old('order_id', $delivery->order_id) == $order->id)>
-                                        {{ $order->invoice_no }} (${{ number_format($order->total, 2) }})
+                                        {{ $order->invoice_no }} (Rs. {{ number_format($order->total, 2) }})
                                     </option>
                                 @endforeach
                             </select>
@@ -46,7 +46,7 @@
                                 <option value="">None</option>
                                 @foreach($zones as $zone)
                                     <option value="{{ $zone->id }}" data-fee="{{ $zone->base_fee }}" @selected(old('delivery_zone_id', $delivery->delivery_zone_id) == $zone->id)>
-                                        {{ $zone->name }} (${{ number_format($zone->base_fee, 2) }})
+                                        {{ $zone->name }} (Rs. {{ number_format($zone->base_fee, 2) }})
                                     </option>
                                 @endforeach
                             </select>

@@ -20,7 +20,7 @@
                     </div>
                     <div class="col-md-6">
                         <span class="text-muted small">Base Fee</span>
-                        <div class="fw-700 fs-4 text-primary">${{ number_format($deliveryZone->base_fee, 2) }}</div>
+                        <div class="fw-700 fs-4 text-primary">Rs. {{ number_format($deliveryZone->base_fee, 2) }}</div>
                     </div>
                 </div>
                 <div class="mb-4">

@@ -19,7 +19,7 @@
             @foreach($menuItemsWithoutRecipe as $mi)
             <li>
                 <a class="dropdown-item" href="{{ route('recipes.builder', $mi) }}">
-                    {{ $mi->name }} <span class="badge bg-light text-dark ms-2">${{ number_format($mi->price, 2) }}</span>
+                    {{ $mi->name }} <span class="badge bg-light text-dark ms-2">Rs. {{ number_format($mi->price, 2) }}</span>
                 </a>
             </li>
             @endforeach
@@ -39,7 +39,7 @@
     <div class="col-md-4">
         <div class="stat-card">
             <div class="stat-label">Avg Recipe Cost</div>
-            <div class="stat-value text-primary">${{ number_format($stats['avg_recipe_cost'], 2) }}</div>
+            <div class="stat-value text-primary">Rs. {{ number_format($stats['avg_recipe_cost'], 2) }}</div>
         </div>
     </div>
     <div class="col-md-4">
@@ -77,8 +77,8 @@
                     <tr>
                         <td class="ps-4 fw-bold text-dark">{{ $r->menuItem->name ?? 'Deleted Item' }}</td>
                         <td><span class="badge bg-light text-dark border">{{ $r->menuItem->category->name ?? 'Uncategorized' }}</span></td>
-                        <td class="fw-bold">${{ number_format($sellingPrice, 2) }}</td>
-                        <td class="fw-bold text-danger">${{ number_format($cost, 2) }}</td>
+                        <td class="fw-bold">Rs. {{ number_format($sellingPrice, 2) }}</td>
+                        <td class="fw-bold text-danger">Rs. {{ number_format($cost, 2) }}</td>
                         <td>
                             <span class="badge {{ $margin >= 50 ? 'bg-success' : ($margin >= 20 ? 'bg-warning text-dark' : 'bg-danger') }} fs-6">
                                 {{ $margin }}% Margin

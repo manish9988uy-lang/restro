@@ -94,7 +94,7 @@
                             </td>
                             <td class="small">{{ $customer->phone ?? '—' }}</td>
                             <td class="small text-center">{{ $customer->orders_count }}</td>
-                            <td class="fw-600 small text-success">${{ number_format($customer->total_spent, 2) }}</td>
+                            <td class="fw-600 small text-success">Rs. {{ number_format($customer->total_spent, 2) }}</td>
                             <td>
                                 @php
                                     $tierColors = [

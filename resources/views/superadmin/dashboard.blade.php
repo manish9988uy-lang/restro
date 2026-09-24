@@ -64,7 +64,7 @@
                     <div class="row align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Total Revenue</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">${{ number_format($totalRevenue, 2) }}</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">Rs. {{ number_format($totalRevenue, 2) }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="bi bi-cash-stack fs-1 text-warning"></i>

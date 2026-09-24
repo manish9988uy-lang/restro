@@ -34,7 +34,7 @@
                         <div class="text-muted small">Total Orders</div>
                     </div>
                     <div class="col-6">
-                        <div class="fw-700 fs-4 text-success">${{ number_format($customer->total_spent, 2) }}</div>
+                        <div class="fw-700 fs-4 text-success">Rs. {{ number_format($customer->total_spent, 2) }}</div>
                         <div class="text-muted small">Total Spent</div>
                     </div>
                     <div class="col-6">
@@ -87,7 +87,7 @@
                                 </a>
                             </td>
                             <td class="small">{{ $order->items->count() }} items</td>
-                            <td class="fw-600 small text-success">${{ number_format($order->total, 2) }}</td>
+                            <td class="fw-600 small text-success">Rs. {{ number_format($order->total, 2) }}</td>
                             <td><span class="badge bg-{{ $order->status_color }}">{{ ucfirst($order->order_status) }}</span></td>
                             <td class="text-muted small">{{ $order->created_at->format('M d, Y H:i') }}</td>
                         </tr>

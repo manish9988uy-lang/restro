@@ -78,7 +78,7 @@
                 <tr>
                     <td>{{ $item->menuItem->name }}</td>
                     <td style="text-align:center">{{ $item->quantity }}</td>
-                    <td>${{ number_format($item->subtotal, 2) }}</td>
+                    <td>Rs. {{ number_format($item->subtotal, 2) }}</td>
                 </tr>
                 @endforeach
             </tbody>
@@ -87,17 +87,17 @@
         <div class="divider"></div>
 
         <div class="totals">
-            <div class="row"><span>Subtotal</span><span>${{ number_format($order->sub_total, 2) }}</span></div>
-            <div class="row"><span>VAT</span><span>${{ number_format($order->vat, 2) }}</span></div>
+            <div class="row"><span>Subtotal</span><span>Rs. {{ number_format($order->sub_total, 2) }}</span></div>
+            <div class="row"><span>VAT</span><span>Rs. {{ number_format($order->vat, 2) }}</span></div>
             @if($order->discount > 0)
-            <div class="row" style="color:#22c55e;"><span>Discount</span><span>-${{ number_format($order->discount, 2) }}</span></div>
+            <div class="row" style="color:#22c55e;"><span>Discount</span><span>-Rs. {{ number_format($order->discount, 2) }}</span></div>
             @endif
-            <div class="row grand"><span>TOTAL</span><span>${{ number_format($order->total, 2) }}</span></div>
-            <div class="row" style="font-size:.875rem;"><span>Paid</span><span>${{ number_format($order->pay_amount, 2) }}</span></div>
+            <div class="row grand"><span>TOTAL</span><span>Rs. {{ number_format($order->total, 2) }}</span></div>
+            <div class="row" style="font-size:.875rem;"><span>Paid</span><span>Rs. {{ number_format($order->pay_amount, 2) }}</span></div>
             @if($order->due_amount > 0)
-            <div class="row" style="color:#dc3545;"><span>Due</span><span>${{ number_format($order->due_amount, 2) }}</span></div>
+            <div class="row" style="color:#dc3545;"><span>Due</span><span>Rs. {{ number_format($order->due_amount, 2) }}</span></div>
             @else
-            <div class="row" style="color:#22c55e;"><span>Change</span><span>${{ number_format($order->pay_amount - $order->total, 2) }}</span></div>
+            <div class="row" style="color:#22c55e;"><span>Change</span><span>Rs. {{ number_format($order->pay_amount - $order->total, 2) }}</span></div>
             @endif
         </div>
     </div>

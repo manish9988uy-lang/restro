@@ -46,7 +46,7 @@
                             </tr>
                             <tr>
                                 <td class="fw-semibold text-muted">Salary</td>
-                                <td class="fw-bold">${{ number_format($employee->salary, 2) }}</td>
+                                <td class="fw-bold">Rs. {{ number_format($employee->salary, 2) }}</td>
                             </tr>
                             <tr>
                                 <td class="fw-semibold text-muted">Vacation Days</td>

@@ -15,7 +15,7 @@
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Points per ${{ $campaign->amount_for_points ?? 1 }} spent</th>
+                    <th>Points per Rs. {{ $campaign->amount_for_points ?? 1 }} spent</th>
                     <th>Reward</th>
                     <th>Validity</th>
                     <th>Status</th>
@@ -26,7 +26,7 @@
                 @forelse($campaigns as $campaign)
                 <tr>
                     <td class="fw-600">{{ $campaign->name }}</td>
-                    <td>{{ $campaign->points_per_amount }} pts / ${{ $campaign->amount_for_points }}</td>
+                    <td>{{ $campaign->points_per_amount }} pts / Rs. {{ $campaign->amount_for_points }}</td>
                     <td>
                         @if($campaign->reward_type === 'discount')
                         {{ $campaign->reward_value }}% Discount

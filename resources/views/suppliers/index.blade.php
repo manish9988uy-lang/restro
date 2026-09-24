@@ -44,7 +44,7 @@
                 <div class="stat-icon bg-danger bg-opacity-10 text-danger"><i class="bi bi-cash-stack"></i></div>
                 <div>
                     <div class="stat-label">Total Credit / Payable</div>
-                    <div class="stat-value">${{ number_format($stats['total_due'], 2) }}</div>
+                    <div class="stat-value">Rs. {{ number_format($stats['total_due'], 2) }}</div>
                 </div>
             </div>
         </div>
@@ -106,7 +106,7 @@
                         <td class="small">{{ $supplier->address ?? '-' }}</td>
                         <td><span class="badge bg-secondary rounded-pill">{{ $supplier->purchase_orders_count }} POs</span></td>
                         <td class="fw-bold {{ $supplier->credit_balance > 0 ? 'text-danger' : 'text-success' }}">
-                            ${{ number_format($supplier->credit_balance, 2) }}
+                            Rs. {{ number_format($supplier->credit_balance, 2) }}
                         </td>
                         <td>
                             @if($supplier->is_active)

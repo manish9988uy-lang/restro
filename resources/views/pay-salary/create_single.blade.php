@@ -22,7 +22,7 @@
                             <select name="employee_id" class="form-select @error('employee_id') is-invalid @enderror" id="employeeSelect" required>
                                 <option value="">Select an employee</option>
                                 @foreach($employees as $employee)
-                                    <option value="{{ $employee->id }}" data-salary="{{ $employee->salary }}" @selected(old('employee_id') == $employee->id)>{{ $employee->name }} (${{ number_format($employee->salary, 2) }})</option>
+                                    <option value="{{ $employee->id }}" data-salary="{{ $employee->salary }}" @selected(old('employee_id') == $employee->id)>{{ $employee->name }} (Rs. {{ number_format($employee->salary, 2) }})</option>
                                 @endforeach
                             </select>
                             @error('employee_id')<div class="invalid-feedback">{{ $message }}</div>@enderror

@@ -68,7 +68,7 @@
                     <td>{{ $employee->email }}</td>
                     <td>{{ $employee->phone }}</td>
                     <td>{{ $employee->city }}</td>
-                    <td class="fw-semibold">${{ number_format($employee->salary, 2) }}</td>
+                    <td class="fw-semibold">Rs. {{ number_format($employee->salary, 2) }}</td>
                     <td>
                         <div class="d-flex gap-1">
                             <a href="{{ route('employees.show', $employee) }}" class="btn btn-sm btn-outline-primary" title="View">

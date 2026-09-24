@@ -44,7 +44,7 @@
                 <div class="stat-icon" style="background:#F0FFF4;"><i class="bi bi-currency-dollar" style="color:#22c55e;"></i></div>
                 <div>
                     <div class="stat-label">Revenue</div>
-                    <div class="stat-value" style="font-size:1.3rem;">${{ number_format($stats['revenue'], 0) }}</div>
+                    <div class="stat-value" style="font-size:1.3rem;">Rs. {{ number_format($stats['revenue'], 0) }}</div>
                 </div>
             </div>
         </div>
@@ -138,7 +138,7 @@
                         @endif
                     </td>
                     <td class="small text-center">{{ $order->items->count() }}</td>
-                    <td class="fw-600 small">${{ number_format($order->total, 2) }}</td>
+                    <td class="fw-600 small">Rs. {{ number_format($order->total, 2) }}</td>
                     <td>
                         @if($order->payment_status == 'paid')
                             <span class="badge bg-success-subtle text-success">Paid</span>

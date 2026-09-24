@@ -27,15 +27,15 @@
                             </tr>
                             <tr>
                                 <td class="fw-semibold text-muted">Total Paid Amount</td>
-                                <td class="fw-bold text-primary">${{ number_format($paySalary->paid_amount, 2) }}</td>
+                                <td class="fw-bold text-primary">Rs. {{ number_format($paySalary->paid_amount, 2) }}</td>
                             </tr>
                             <tr>
                                 <td class="fw-semibold text-muted">Advance Deducted</td>
-                                <td class="fw-bold text-warning">${{ number_format($paySalary->advance_salary, 2) }}</td>
+                                <td class="fw-bold text-warning">Rs. {{ number_format($paySalary->advance_salary, 2) }}</td>
                             </tr>
                             <tr>
                                 <td class="fw-semibold text-muted">Due Salary</td>
-                                <td class="fw-bold text-success">${{ number_format($paySalary->due_salary, 2) }}</td>
+                                <td class="fw-bold text-success">Rs. {{ number_format($paySalary->due_salary, 2) }}</td>
                             </tr>
                         </table>
                     </div>

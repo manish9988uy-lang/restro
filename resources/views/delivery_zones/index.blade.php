@@ -27,7 +27,7 @@
                 <tr>
                     <td>{{ $zone->id }}</td>
                     <td class="fw-600">{{ $zone->name }}</td>
-                    <td>${{ number_format($zone->base_fee, 2) }}</td>
+                    <td>Rs. {{ number_format($zone->base_fee, 2) }}</td>
                     <td>{{ $zone->min_order > 0 ? '$'.number_format($zone->min_order, 2) : 'None' }}</td>
                     <td>
                         <span class="badge {{ $zone->is_active ? 'bg-success' : 'bg-danger' }}">

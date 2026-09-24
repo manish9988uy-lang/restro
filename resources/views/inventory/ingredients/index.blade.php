@@ -49,7 +49,7 @@
                 <div class="stat-icon bg-success bg-opacity-10 text-success"><i class="bi bi-currency-dollar"></i></div>
                 <div>
                     <div class="stat-label">Total Inventory Valuation</div>
-                    <div class="stat-value text-success">${{ number_format($stats['total_value'], 2) }}</div>
+                    <div class="stat-value text-success">Rs. {{ number_format($stats['total_value'], 2) }}</div>
                 </div>
             </div>
         </div>
@@ -110,8 +110,8 @@
                             @endif
                         </td>
                         <td class="text-muted">{{ number_format($ing->alert_threshold, 3) }} {{ $ing->unit }}</td>
-                        <td>${{ number_format($ing->cost_per_unit, 2) }} / {{ $ing->unit }}</td>
-                        <td class="fw-bold text-success">${{ number_format($ing->current_stock * $ing->cost_per_unit, 2) }}</td>
+                        <td>Rs. {{ number_format($ing->cost_per_unit, 2) }} / {{ $ing->unit }}</td>
+                        <td class="fw-bold text-success">Rs. {{ number_format($ing->current_stock * $ing->cost_per_unit, 2) }}</td>
                         <td><span class="badge bg-light text-dark border">{{ $ing->location ?? 'Main Store' }}</span></td>
                         <td>
                             @if($ing->is_active)

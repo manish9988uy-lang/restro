@@ -78,50 +78,50 @@
                             <tr>
                                 <td>{{ $item->menuItem->name }}</td>
                                 <td class="text-center">{{ $item->quantity }}</td>
-                                <td class="text-end">${{ number_format($item->unit_price, 2) }}</td>
-                                <td class="text-end fw-600">${{ number_format($item->subtotal, 2) }}</td>
+                                <td class="text-end">Rs. {{ number_format($item->unit_price, 2) }}</td>
+                                <td class="text-end fw-600">Rs. {{ number_format($item->subtotal, 2) }}</td>
                             </tr>
                             @endforeach
                         </tbody>
                         <tfoot style="background:#f8f9fc;">
                             <tr>
                                 <td colspan="3" class="text-end fw-600">Subtotal</td>
-                                <td class="text-end">${{ number_format($order->sub_total, 2) }}</td>
+                                <td class="text-end">Rs. {{ number_format($order->sub_total, 2) }}</td>
                             </tr>
                             <tr>
                                 <td colspan="3" class="text-end fw-600">VAT</td>
-                                <td class="text-end">${{ number_format($order->vat, 2) }}</td>
+                                <td class="text-end">Rs. {{ number_format($order->vat, 2) }}</td>
                             </tr>
                             @if($order->discount > 0)
                             <tr>
                                 <td colspan="3" class="text-end fw-600 text-success">Discount</td>
-                                <td class="text-end text-success">-${{ number_format($order->discount, 2) }}</td>
+                                <td class="text-end text-success">-Rs. {{ number_format($order->discount, 2) }}</td>
                             </tr>
                             @endif
                             @if($order->tip > 0)
                             <tr>
                                 <td colspan="3" class="text-end fw-600 text-info">Tip</td>
-                                <td class="text-end text-info">${{ number_format($order->tip, 2) }}</td>
+                                <td class="text-end text-info">Rs. {{ number_format($order->tip, 2) }}</td>
                             </tr>
                             @endif
                             <tr>
                                 <td colspan="3" class="text-end fw-700 fs-6">Total</td>
-                                <td class="text-end fw-700 text-danger fs-6">${{ number_format($order->total, 2) }}</td>
+                                <td class="text-end fw-700 text-danger fs-6">Rs. {{ number_format($order->total, 2) }}</td>
                             </tr>
                             <tr>
                                 <td colspan="3" class="text-end fw-600">Paid</td>
-                                <td class="text-end text-success">${{ number_format($order->pay_amount, 2) }}</td>
+                                <td class="text-end text-success">Rs. {{ number_format($order->pay_amount, 2) }}</td>
                             </tr>
                             @if($order->due_amount > 0)
                             <tr>
                                 <td colspan="3" class="text-end fw-600">Due</td>
-                                <td class="text-end text-danger">${{ number_format($order->due_amount, 2) }}</td>
+                                <td class="text-end text-danger">Rs. {{ number_format($order->due_amount, 2) }}</td>
                             </tr>
                             @endif
                             @if($order->refund_amount > 0)
                             <tr>
                                 <td colspan="3" class="text-end fw-600 text-danger">Refunded</td>
-                                <td class="text-end text-danger">${{ number_format($order->refund_amount, 2) }}</td>
+                                <td class="text-end text-danger">Rs. {{ number_format($order->refund_amount, 2) }}</td>
                             </tr>
                             @endif
                         </tfoot>

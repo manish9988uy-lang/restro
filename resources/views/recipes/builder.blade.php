@@ -17,7 +17,7 @@
                 <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
                     <div>
                         <h5 class="fw-bold mb-0 text-primary"><i class="bi bi-tools me-2"></i>Recipe Builder — {{ $menuItem->name }}</h5>
-                        <small class="text-muted">Menu Item Selling Price: <strong>${{ number_format($menuItem->price, 2) }}</strong></small>
+                        <small class="text-muted">Menu Item Selling Price: <strong>Rs. {{ number_format($menuItem->price, 2) }}</strong></small>
                     </div>
                     <span class="badge bg-light text-dark border fs-6">{{ $menuItem->category->name ?? 'Category' }}</span>
                 </div>
@@ -48,7 +48,7 @@
                                     <option value="">-- Select Ingredient --</option>
                                     @foreach($ingredients as $ing)
                                     <option value="{{ $ing->id }}" data-cost="{{ $ing->cost_per_unit }}" data-unit="{{ $ing->unit }}" {{ (is_array($ri) ? $ri['ingredient_id'] : $ri->ingredient_id) == $ing->id ? 'selected' : '' }}>
-                                        {{ $ing->name }} (${{ number_format($ing->cost_per_unit, 2) }}/{{ $ing->unit }})
+                                        {{ $ing->name }} (Rs. {{ number_format($ing->cost_per_unit, 2) }}/{{ $ing->unit }})
                                     </option>
                                     @endforeach
                                 </select>
@@ -70,7 +70,7 @@
                                     <option value="">-- Select Ingredient --</option>
                                     @foreach($ingredients as $ing)
                                     <option value="{{ $ing->id }}" data-cost="{{ $ing->cost_per_unit }}" data-unit="{{ $ing->unit }}">
-                                        {{ $ing->name }} (${{ number_format($ing->cost_per_unit, 2) }}/{{ $ing->unit }})
+                                        {{ $ing->name }} (Rs. {{ number_format($ing->cost_per_unit, 2) }}/{{ $ing->unit }})
                                     </option>
                                     @endforeach
                                 </select>
@@ -113,7 +113,7 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between mb-2">
                         <span class="text-muted">Selling Price:</span>
-                        <strong class="fs-6">${{ number_format($menuItem->price, 2) }}</strong>
+                        <strong class="fs-6">Rs. {{ number_format($menuItem->price, 2) }}</strong>
                     </div>
                     <div class="d-flex justify-content-between mb-2">
                         <span class="text-muted">Total Recipe Cost:</span>
@@ -148,7 +148,7 @@
                     <option value="">-- Select Ingredient --</option>
                     @foreach($ingredients as $ing)
                     <option value="{{ $ing->id }}" data-cost="{{ $ing->cost_per_unit }}" data-unit="{{ $ing->unit }}">
-                        {{ $ing->name }} (${{ number_format($ing->cost_per_unit, 2) }}/{{ $ing->unit }})
+                        {{ $ing->name }} (Rs. {{ number_format($ing->cost_per_unit, 2) }}/{{ $ing->unit }})
                     </option>
                     @endforeach
                 </select>

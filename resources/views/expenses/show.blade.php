@@ -24,7 +24,7 @@
                     </div>
                     <div class="col-md-4">
                         <span class="text-muted small">Amount</span>
-                        <div class="fw-700 fs-4 text-primary">${{ number_format($expense->amount, 2) }}</div>
+                        <div class="fw-700 fs-4 text-primary">Rs. {{ number_format($expense->amount, 2) }}</div>
                     </div>
                     <div class="col-md-4">
                         <span class="text-muted small">Date</span>

@@ -24,7 +24,7 @@
                             @if($coupon->type === 'percentage')
                             {{ $coupon->value }}%
                             @else
-                            ${{ number_format($coupon->value, 2) }}
+                            Rs. {{ number_format($coupon->value, 2) }}
                             @endif
                         </div>
                     </div>

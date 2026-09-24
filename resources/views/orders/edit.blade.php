@@ -69,7 +69,7 @@
                                     <select name="items[{{ $index }}][menu_item_id]" class="form-select item-select">
                                         @foreach($menuItems as $menuItem)
                                         <option value="{{ $menuItem->id }}" data-price="{{ $menuItem->price }}" @selected($item->menu_item_id == $menuItem->id)>
-                                            {{ $menuItem->name }} - ${{ number_format($menuItem->price, 2) }}
+                                            {{ $menuItem->name }} - Rs. {{ number_format($menuItem->price, 2) }}
                                         </option>
                                         @endforeach
                                     </select>
@@ -78,7 +78,7 @@
                                     <input type="number" name="items[{{ $index }}][quantity]" class="form-control item-quantity" value="{{ $item->quantity }}" min="1">
                                 </div>
                                 <div class="col-md-2">
-                                    <div class="fw-600 item-subtotal">${{ number_format($item->subtotal, 2) }}</div>
+                                    <div class="fw-600 item-subtotal">Rs. {{ number_format($item->subtotal, 2) }}</div>
                                 </div>
                                 <div class="col-md-1">
                                     <button type="button" class="btn btn-outline-danger remove-item"><i class="bi bi-trash"></i></button>

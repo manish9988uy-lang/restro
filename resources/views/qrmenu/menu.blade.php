@@ -63,7 +63,7 @@
                                         <div class="card-body py-2 pe-2 h-100 d-flex flex-column">
                                             <div class="d-flex justify-content-between align-items-start">
                                                 <h6 class="card-title mb-1 fw-bold">{{ $item->name }}</h6>
-                                                <span class="text-success fw-bold">${{ number_format($item->price, 2) }}</span>
+                                                <span class="text-success fw-bold">Rs. {{ number_format($item->price, 2) }}</span>
                                             </div>
                                             <p class="card-text small text-muted mb-2 flex-grow-1" style="font-size: 0.8rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
                                                 {{ $item->description }}

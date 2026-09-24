@@ -65,7 +65,7 @@
                                 </a>
                             </td>
                             <td class="small">{{ Str::limit($delivery->delivery_address, 30) }}</td>
-                            <td class="fw-600 small">${{ number_format($delivery->delivery_fee, 2) }}</td>
+                            <td class="fw-600 small">Rs. {{ number_format($delivery->delivery_fee, 2) }}</td>
                             <td>
                                 @php $statusColors = ['pending'=>'warning','assigned'=>'info','picked_up'=>'primary','in_transit'=>'secondary','delivered'=>'success','cancelled'=>'danger'] @endphp
                                 <span class="badge bg-{{ $statusColors[$delivery->status] }}">{{ ucwords(str_replace('_', ' ', $delivery->status)) }}</span>

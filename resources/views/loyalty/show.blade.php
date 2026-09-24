@@ -16,7 +16,7 @@
                 <div class="row mb-4">
                     <div class="col-md-6">
                         <span class="text-muted small">Points Earned</span>
-                        <div class="fw-600">{{ $campaign->points_per_amount }} pts / ${{ $campaign->amount_for_points }}</div>
+                        <div class="fw-600">{{ $campaign->points_per_amount }} pts / Rs. {{ $campaign->amount_for_points }}</div>
                     </div>
                     <div class="col-md-6">
                         <span class="text-muted small">Reward</span>

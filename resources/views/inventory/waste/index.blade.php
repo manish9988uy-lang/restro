@@ -19,13 +19,13 @@
     <div class="col-md-4">
         <div class="stat-card">
             <div class="stat-label text-danger">Total Loss (All Time)</div>
-            <div class="stat-value text-danger">${{ number_format($stats['total_cost'], 2) }}</div>
+            <div class="stat-value text-danger">Rs. {{ number_format($stats['total_cost'], 2) }}</div>
         </div>
     </div>
     <div class="col-md-4">
         <div class="stat-card">
             <div class="stat-label text-warning">This Month's Waste Loss</div>
-            <div class="stat-value text-warning">${{ number_format($stats['month_cost'], 2) }}</div>
+            <div class="stat-value text-warning">Rs. {{ number_format($stats['month_cost'], 2) }}</div>
         </div>
     </div>
     <div class="col-md-4">
@@ -78,8 +78,8 @@
                         <td class="ps-4 text-muted small">{{ $w->logged_at }}</td>
                         <td class="fw-bold text-dark">{{ $w->ingredient->name ?? 'Deleted Ingredient' }}</td>
                         <td class="fw-bold text-danger">{{ number_format($w->quantity, 3) }} {{ $w->ingredient->unit ?? '' }}</td>
-                        <td>${{ number_format($w->unit_cost, 2) }}</td>
-                        <td class="fw-bold text-danger">${{ number_format($w->total_cost, 2) }}</td>
+                        <td>Rs. {{ number_format($w->unit_cost, 2) }}</td>
+                        <td class="fw-bold text-danger">Rs. {{ number_format($w->total_cost, 2) }}</td>
                         <td><span class="badge bg-danger-subtle text-danger border border-danger">{{ ucfirst($w->reason) }}</span></td>
                         <td class="small">{{ $w->user->name ?? 'System' }}</td>
                         <td class="pe-4 text-end">

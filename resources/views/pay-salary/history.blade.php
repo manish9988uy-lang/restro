@@ -59,9 +59,9 @@
                     <td class="fw-semibold">{{ $pay->employee?->name ?? 'Unknown Employee' }}</td>
                     <td>{{ \Illuminate\Support\Carbon::parse($pay->date)->format('Y-m-d') }}</td>
                     <td>{{ $pay->salary_month }}</td>
-                    <td class="fw-semibold text-primary">${{ number_format($pay->paid_amount, 2) }}</td>
-                    <td class="fw-semibold text-warning">${{ number_format($pay->advance_salary, 2) }}</td>
-                    <td class="fw-semibold text-success">${{ number_format($pay->due_salary, 2) }}</td>
+                    <td class="fw-semibold text-primary">Rs. {{ number_format($pay->paid_amount, 2) }}</td>
+                    <td class="fw-semibold text-warning">Rs. {{ number_format($pay->advance_salary, 2) }}</td>
+                    <td class="fw-semibold text-success">Rs. {{ number_format($pay->due_salary, 2) }}</td>
                     <td>
                         <a href="{{ route('pay-salary.pay-history-detail', $pay) }}" class="btn btn-sm btn-outline-primary" title="View">
                             <i class="bi bi-eye"></i>

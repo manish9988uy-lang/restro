@@ -18,7 +18,7 @@
                         <i class="bi bi-person-circle" style="font-size: 2rem;"></i>
                         <div>
                             <h6 class="mb-0">{{ $advanceSalary->employee?->name ?? 'Unknown Employee' }}</h6>
-                            <div class="text-muted small">Salary: ${{ number_format($advanceSalary->employee?->salary ?? 0, 2) }} | Advance: ${{ number_format($advanceSalary->advance_salary, 2) }}</div>
+                            <div class="text-muted small">Salary: Rs. {{ number_format($advanceSalary->employee?->salary ?? 0, 2) }} | Advance: Rs. {{ number_format($advanceSalary->advance_salary, 2) }}</div>
                         </div>
                     </div>
                 </div>
@@ -57,15 +57,15 @@
                     <div class="row g-3 mt-3">
                         <div class="col-md-4">
                             <label class="form-label small fw-semibold">Total Salary</label>
-                            <div class="form-control-plaintext fw-bold text-primary">${{ number_format($advanceSalary->employee?->salary ?? 0, 2) }}</div>
+                            <div class="form-control-plaintext fw-bold text-primary">Rs. {{ number_format($advanceSalary->employee?->salary ?? 0, 2) }}</div>
                         </div>
                         <div class="col-md-4">
                             <label class="form-label small fw-semibold">Advance Deduction</label>
-                            <div class="form-control-plaintext fw-bold text-warning">${{ number_format($advanceSalary->advance_salary, 2) }}</div>
+                            <div class="form-control-plaintext fw-bold text-warning">Rs. {{ number_format($advanceSalary->advance_salary, 2) }}</div>
                         </div>
                         <div class="col-md-4">
                             <label class="form-label small fw-semibold">Due Salary</label>
-                            <div class="form-control-plaintext fw-bold text-success">${{ number_format(($advanceSalary->employee?->salary ?? 0) - $advanceSalary->advance_salary, 2) }}</div>
+                            <div class="form-control-plaintext fw-bold text-success">Rs. {{ number_format(($advanceSalary->employee?->salary ?? 0) - $advanceSalary->advance_salary, 2) }}</div>
                         </div>
                     </div>
 

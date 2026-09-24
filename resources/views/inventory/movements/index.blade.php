@@ -85,8 +85,8 @@
                         <td class="fw-bold fs-6 {{ in_array($m->type, ['stock_out', 'sale_deduction', 'waste']) ? 'text-danger' : 'text-success' }}">
                             {{ in_array($m->type, ['stock_out', 'sale_deduction', 'waste']) ? '-' : '+' }}{{ number_format($m->quantity, 3) }} {{ $m->ingredient->unit ?? '' }}
                         </td>
-                        <td>${{ number_format($m->cost_per_unit, 2) }}</td>
-                        <td class="fw-bold">${{ number_format($m->total_cost, 2) }}</td>
+                        <td>Rs. {{ number_format($m->cost_per_unit, 2) }}</td>
+                        <td class="fw-bold">Rs. {{ number_format($m->total_cost, 2) }}</td>
                         <td class="small"><span class="badge bg-light text-dark border">{{ $m->reference_type ?? 'Manual' }} #{{ $m->reference_id ?? '' }}</span></td>
                         <td class="small">{{ $m->user->name ?? 'System' }}</td>
                         <td class="pe-4 small text-muted">{{ $m->notes ?? '-' }}</td>

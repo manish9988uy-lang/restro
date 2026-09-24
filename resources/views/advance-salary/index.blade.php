@@ -56,7 +56,7 @@
                 <tr>
                     <td class="fw-semibold">{{ $advance->employee?->name ?? 'Unknown Employee' }}</td>
                     <td>{{ \Illuminate\Support\Carbon::parse($advance->date)->format('Y-m-d') }}</td>
-                    <td class="fw-semibold">${{ number_format($advance->advance_salary, 2) }}</td>
+                    <td class="fw-semibold">Rs. {{ number_format($advance->advance_salary, 2) }}</td>
                     <td>
                         @if($advance->is_deducted)
                             <span class="badge bg-success">Deducted</span>

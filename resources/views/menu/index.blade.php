@@ -88,8 +88,8 @@
                             <i class="{{ $item->category->icon }} me-1"></i>{{ $item->category->name }}
                         </span>
                     </td>
-                    <td class="fw-600 text-success small">${{ number_format($item->price, 2) }}</td>
-                    <td class="text-muted small">${{ number_format($item->cost_price, 2) }}</td>
+                    <td class="fw-600 text-success small">Rs. {{ number_format($item->price, 2) }}</td>
+                    <td class="text-muted small">Rs. {{ number_format($item->cost_price, 2) }}</td>
                     <td class="small">{{ $item->preparation_time ?? '—' }}</td>
                     <td class="small">
                         @if($item->stock_quantity == -1)

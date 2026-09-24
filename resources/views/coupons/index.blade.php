@@ -33,7 +33,7 @@
                         @if($coupon->type === 'percentage')
                         {{ $coupon->value }}%
                         @else
-                        ${{ number_format($coupon->value, 2) }}
+                        Rs. {{ number_format($coupon->value, 2) }}
                         @endif
                     </td>
                     <td>{{ $coupon->min_order > 0 ? '$'.number_format($coupon->min_order, 2) : 'None' }}</td>

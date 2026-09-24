@@ -64,8 +64,8 @@
                 <tr>
                     <td class="fw-semibold">{{ $advance->employee?->name ?? 'Unknown Employee' }}</td>
                     <td>{{ \Illuminate\Support\Carbon::parse($advance->date)->format('Y-m-d') }}</td>
-                    <td class="fw-semibold text-warning">${{ number_format($advance->advance_salary, 2) }}</td>
-                    <td class="fw-semibold">${{ number_format($advance->employee?->salary ?? 0, 2) }}</td>
+                    <td class="fw-semibold text-warning">Rs. {{ number_format($advance->advance_salary, 2) }}</td>
+                    <td class="fw-semibold">Rs. {{ number_format($advance->employee?->salary ?? 0, 2) }}</td>
                     <td>
                         <a href="{{ route('pay-salary.pay-salary', $advance) }}" class="btn btn-sm btn-primary">
                             <i class="bi bi-cash-stack me-1"></i>Pay

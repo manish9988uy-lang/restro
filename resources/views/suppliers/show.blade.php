@@ -30,7 +30,7 @@
                     <div><strong class="text-muted">Tax ID:</strong> {{ $supplier->tax_number ?? 'N/A' }}</div>
                     <div>
                         <strong class="text-muted">Current Credit / Due:</strong> 
-                        <span class="fs-6 fw-bold text-danger ms-1">${{ number_format($supplier->credit_balance, 2) }}</span>
+                        <span class="fs-6 fw-bold text-danger ms-1">Rs. {{ number_format($supplier->credit_balance, 2) }}</span>
                     </div>
                 </div>
                 <button class="btn btn-outline-danger w-100 rounded-pill mt-3" data-bs-toggle="modal" data-bs-target="#recordPaymentModal">
@@ -67,7 +67,7 @@
                                 <td>{{ $po->order_date }}</td>
                                 <td><span class="badge bg-info text-dark">{{ ucfirst($po->status) }}</span></td>
                                 <td><span class="badge bg-secondary">{{ ucfirst($po->payment_status) }}</span></td>
-                                <td class="fw-bold">${{ number_format($po->total_amount, 2) }}</td>
+                                <td class="fw-bold">Rs. {{ number_format($po->total_amount, 2) }}</td>
                                 <td class="pe-3 text-end">
                                     <a href="{{ route('purchase-orders.show', $po) }}" class="btn btn-sm btn-outline-primary"><i class="bi bi-eye"></i> View</a>
                                 </td>
@@ -103,7 +103,7 @@
                                 <td class="ps-3">{{ $payment->payment_date }}</td>
                                 <td><span class="badge bg-light text-dark border">{{ ucfirst($payment->payment_method) }}</span></td>
                                 <td>{{ $payment->reference ?? '-' }}</td>
-                                <td class="fw-bold text-success">${{ number_format($payment->amount, 2) }}</td>
+                                <td class="fw-bold text-success">Rs. {{ number_format($payment->amount, 2) }}</td>
                             </tr>
                             @empty
                             <tr><td colspan="4" class="text-center py-3 text-muted">No payments recorded yet.</td></tr>

@@ -46,9 +46,9 @@
                             <span class="badge bg-light text-dark border">0.00</span>
                             @endif
                         </td>
-                        <td>${{ number_format($item->unit_cost, 2) }}</td>
+                        <td>Rs. {{ number_format($item->unit_cost, 2) }}</td>
                         <td class="pe-4 text-end fw-bold {{ $item->variance_cost < 0 ? 'text-danger' : ($item->variance_cost > 0 ? 'text-success' : 'text-muted') }}">
-                            ${{ number_format($item->variance_cost, 2) }}
+                            Rs. {{ number_format($item->variance_cost, 2) }}
                         </td>
                     </tr>
                     @endforeach

@@ -52,28 +52,28 @@
     <div class="col-md-3">
         <div class="stat-card">
             <div class="stat-label">Total Revenue</div>
-            <div class="stat-value text-primary">${{ number_format($totalRevenue, 2) }}</div>
+            <div class="stat-value text-primary">Rs. {{ number_format($totalRevenue, 2) }}</div>
             <small class="text-muted">{{ $completedCount }} completed orders</small>
         </div>
     </div>
     <div class="col-md-3">
         <div class="stat-card">
             <div class="stat-label">Average Order Value</div>
-            <div class="stat-value">${{ number_format($avgOrderValue, 2) }}</div>
+            <div class="stat-value">Rs. {{ number_format($avgOrderValue, 2) }}</div>
             <small class="text-muted">Per completed order</small>
         </div>
     </div>
     <div class="col-md-3">
         <div class="stat-card">
             <div class="stat-label text-success">Estimated Gross Profit</div>
-            <div class="stat-value text-success">${{ number_format($grossProfit, 2) }}</div>
+            <div class="stat-value text-success">Rs. {{ number_format($grossProfit, 2) }}</div>
             <small class="text-muted">Revenue - Recipe COGS</small>
         </div>
     </div>
     <div class="col-md-3">
         <div class="stat-card">
             <div class="stat-label text-danger">Total VAT Collected</div>
-            <div class="stat-value text-danger">${{ number_format($totalVat, 2) }}</div>
+            <div class="stat-value text-danger">Rs. {{ number_format($totalVat, 2) }}</div>
             <small class="text-muted">10% VAT tax rate</small>
         </div>
     </div>
@@ -141,9 +141,9 @@
                     <tr>
                         <td class="ps-4 fw-bold">{{ $st->date }}</td>
                         <td><span class="badge bg-secondary rounded-pill">{{ $st->orders }} orders</span></td>
-                        <td>${{ number_format($st->vat, 2) }}</td>
-                        <td class="text-danger">${{ number_format($st->discount, 2) }}</td>
-                        <td class="pe-4 text-end fw-bold text-success">${{ number_format($st->revenue, 2) }}</td>
+                        <td>Rs. {{ number_format($st->vat, 2) }}</td>
+                        <td class="text-danger">Rs. {{ number_format($st->discount, 2) }}</td>
+                        <td class="pe-4 text-end fw-bold text-success">Rs. {{ number_format($st->revenue, 2) }}</td>
                     </tr>
                     @empty
                     <tr><td colspan="5" class="text-center py-4 text-muted">No sales data found for the selected period.</td></tr>
@@ -173,7 +173,7 @@
                         <tr>
                             <td class="ps-3 fw-bold">{{ $cs->category_name }}</td>
                             <td>{{ number_format($cs->qty) }}</td>
-                            <td class="pe-3 text-end fw-bold">${{ number_format($cs->total, 2) }}</td>
+                            <td class="pe-3 text-end fw-bold">Rs. {{ number_format($cs->total, 2) }}</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -198,7 +198,7 @@
                         <tr>
                             <td class="ps-3 fw-bold">{{ $ps->name }}</td>
                             <td>{{ number_format($ps->qty) }}</td>
-                            <td class="pe-3 text-end fw-bold text-success">${{ number_format($ps->total, 2) }}</td>
+                            <td class="pe-3 text-end fw-bold text-success">Rs. {{ number_format($ps->total, 2) }}</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -229,7 +229,7 @@
                             <td class="ps-3 fw-bold">{{ $lsi->name }}</td>
                             <td class="fw-bold text-danger">{{ $lsi->current_stock }} {{ $lsi->unit }}</td>
                             <td>{{ $lsi->alert_threshold }} {{ $lsi->unit }}</td>
-                            <td class="pe-3 text-end">${{ number_format($lsi->cost_per_unit, 2) }}</td>
+                            <td class="pe-3 text-end">Rs. {{ number_format($lsi->cost_per_unit, 2) }}</td>
                         </tr>
                         @empty
                         <tr><td colspan="4" class="text-center py-3 text-muted">All ingredient stock levels are healthy!</td></tr>
@@ -246,15 +246,15 @@
                 <div class="vstack gap-3 fs-6">
                     <div class="d-flex justify-content-between">
                         <span>Total Inventory Stock Valuation:</span>
-                        <strong class="text-primary">${{ number_format($inventoryStats['total_valuation'], 2) }}</strong>
+                        <strong class="text-primary">Rs. {{ number_format($inventoryStats['total_valuation'], 2) }}</strong>
                     </div>
                     <div class="d-flex justify-content-between">
                         <span>Purchases (Received POs):</span>
-                        <strong class="text-dark">${{ number_format($inventoryStats['purchase_cost'], 2) }}</strong>
+                        <strong class="text-dark">Rs. {{ number_format($inventoryStats['purchase_cost'], 2) }}</strong>
                     </div>
                     <div class="d-flex justify-content-between">
                         <span>Waste & Spoilage Cost Loss:</span>
-                        <strong class="text-danger">${{ number_format($inventoryStats['waste_cost'], 2) }}</strong>
+                        <strong class="text-danger">Rs. {{ number_format($inventoryStats['waste_cost'], 2) }}</strong>
                     </div>
                 </div>
             </div>
@@ -283,7 +283,7 @@
                             <td class="ps-3 fw-bold">{{ $c->name }}</td>
                             <td>{{ $c->orders_count }} visits</td>
                             <td><span class="badge bg-warning text-dark">{{ $c->membership_tier ?? 'Bronze' }}</span></td>
-                            <td class="pe-3 text-end fw-bold text-success">${{ number_format($c->total_spent, 2) }}</td>
+                            <td class="pe-3 text-end fw-bold text-success">Rs. {{ number_format($c->total_spent, 2) }}</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -310,7 +310,7 @@
                             <td class="ps-3 fw-bold">{{ $e->name }}</td>
                             <td><span class="badge bg-light text-dark border">{{ $e->getRoleNames()->first() ?? 'Staff' }}</span></td>
                             <td>{{ $e->orders_count }}</td>
-                            <td class="pe-3 text-end fw-bold text-primary">${{ number_format($e->orders_sum_total ?? 0, 2) }}</td>
+                            <td class="pe-3 text-end fw-bold text-primary">Rs. {{ number_format($e->orders_sum_total ?? 0, 2) }}</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -330,27 +330,27 @@
                     <tbody>
                         <tr class="border-bottom">
                             <td><strong>Gross Sales Revenue</strong></td>
-                            <td class="text-end fw-bold text-success">${{ number_format($totalRevenue, 2) }}</td>
+                            <td class="text-end fw-bold text-success">Rs. {{ number_format($totalRevenue, 2) }}</td>
                         </tr>
                         <tr>
                             <td class="ps-3 text-muted">Less: Cost of Ingredients (COGS)</td>
-                            <td class="text-end text-danger">-${{ number_format($estimatedCogs, 2) }}</td>
+                            <td class="text-end text-danger">-Rs. {{ number_format($estimatedCogs, 2) }}</td>
                         </tr>
                         <tr class="border-bottom bg-light">
                             <td><strong>Gross Operating Profit</strong></td>
-                            <td class="text-end fw-bold text-primary">${{ number_format($grossProfit, 2) }}</td>
+                            <td class="text-end fw-bold text-primary">Rs. {{ number_format($grossProfit, 2) }}</td>
                         </tr>
                         <tr>
                             <td class="ps-3 text-muted">Less: Spoilage & Inventory Waste Loss</td>
-                            <td class="text-end text-danger">-${{ number_format($inventoryStats['waste_cost'], 2) }}</td>
+                            <td class="text-end text-danger">-Rs. {{ number_format($inventoryStats['waste_cost'], 2) }}</td>
                         </tr>
                         <tr>
                             <td class="ps-3 text-muted">Less: Operating Expenses</td>
-                            <td class="text-end text-danger">-${{ number_format($totalExpenses, 2) }}</td>
+                            <td class="text-end text-danger">-Rs. {{ number_format($totalExpenses, 2) }}</td>
                         </tr>
                         <tr class="border-top border-3">
                             <td><h4 class="fw-bold mb-0">Net Estimated Margin / Profit</h4></td>
-                            <td class="text-end"><h4 class="fw-bold mb-0 {{ $netProfit >= 0 ? 'text-success' : 'text-danger' }}">${{ number_format($netProfit, 2) }}</h4></td>
+                            <td class="text-end"><h4 class="fw-bold mb-0 {{ $netProfit >= 0 ? 'text-success' : 'text-danger' }}">Rs. {{ number_format($netProfit, 2) }}</h4></td>
                         </tr>
                     </tbody>
                 </table>
@@ -372,7 +372,7 @@
                         @forelse($expenseBreakdown as $eb)
                         <tr>
                             <td class="ps-3 fw-bold">{{ ucfirst($eb->category) }}</td>
-                            <td class="pe-3 text-end">${{ number_format($eb->total, 2) }}</td>
+                            <td class="pe-3 text-end">Rs. {{ number_format($eb->total, 2) }}</td>
                         </tr>
                         @empty
                         <tr><td colspan="2" class="text-center py-3 text-muted">No approved expenses for this period.</td></tr>
@@ -393,16 +393,16 @@
                 <div class="vstack gap-3 fs-6">
                     <div class="d-flex justify-content-between">
                         <span class="text-success"><i class="bi bi-cash-in me-2"></i> Cash In (Sales)</span>
-                        <strong class="text-success">${{ number_format($cashIn, 2) }}</strong>
+                        <strong class="text-success">Rs. {{ number_format($cashIn, 2) }}</strong>
                     </div>
                     <div class="d-flex justify-content-between">
                         <span class="text-danger"><i class="bi bi-cash-out me-2"></i> Cash Out (Purchases + Expenses)</span>
-                        <strong class="text-danger">${{ number_format($cashOut, 2) }}</strong>
+                        <strong class="text-danger">Rs. {{ number_format($cashOut, 2) }}</strong>
                     </div>
                     <hr class="my-2">
                     <div class="d-flex justify-content-between">
                         <span class="fw-bold">Net Cash Flow</span>
-                        <strong class="{{ $netCashFlow >= 0 ? 'text-success' : 'text-danger' }}">${{ number_format($netCashFlow, 2) }}</strong>
+                        <strong class="{{ $netCashFlow >= 0 ? 'text-success' : 'text-danger' }}">Rs. {{ number_format($netCashFlow, 2) }}</strong>
                     </div>
                 </div>
             </div>
@@ -418,7 +418,7 @@
             <div class="col-md-4">
                 <div class="stat-card">
                     <div class="stat-label">Total VAT Collected</div>
-                    <div class="stat-value text-danger">${{ number_format($totalVat, 2) }}</div>
+                    <div class="stat-value text-danger">Rs. {{ number_format($totalVat, 2) }}</div>
                 </div>
             </div>
         </div>
@@ -443,9 +443,9 @@
                     <tr>
                         <td class="fw-bold">{{ $o->invoice_no }}</td>
                         <td>{{ $o->created_at->format('Y-m-d') }}</td>
-                        <td>${{ number_format($o->sub_total, 2) }}</td>
-                        <td class="text-danger">${{ number_format($o->vat, 2) }}</td>
-                        <td>${{ number_format($o->total, 2) }}</td>
+                        <td>Rs. {{ number_format($o->sub_total, 2) }}</td>
+                        <td class="text-danger">Rs. {{ number_format($o->vat, 2) }}</td>
+                        <td>Rs. {{ number_format($o->total, 2) }}</td>
                     </tr>
                     @endforeach
                     @empty

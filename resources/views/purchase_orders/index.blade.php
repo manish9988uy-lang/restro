@@ -37,7 +37,7 @@
     <div class="col-md-3">
         <div class="stat-card">
             <div class="stat-label text-primary">Total Purchases</div>
-            <div class="stat-value">${{ number_format($stats['total_spent'], 2) }}</div>
+            <div class="stat-value">Rs. {{ number_format($stats['total_spent'], 2) }}</div>
         </div>
     </div>
 </div>
@@ -66,7 +66,7 @@
                         <td>{{ $po->supplier->name ?? 'N/A' }}</td>
                         <td>{{ $po->order_date }}</td>
                         <td>{{ $po->expected_date ?? '-' }}</td>
-                        <td class="fw-bold">${{ number_format($po->total_amount, 2) }}</td>
+                        <td class="fw-bold">Rs. {{ number_format($po->total_amount, 2) }}</td>
                         <td>
                             @if($po->status === 'received')
                             <span class="badge bg-success-subtle text-success border border-success">Received</span>

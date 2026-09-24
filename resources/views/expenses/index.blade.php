@@ -11,7 +11,7 @@
                 <div class="stat-icon" style="background:#EFF6FF;"><i class="bi bi-wallet2" style="color:#3b82f6;"></i></div>
                 <div>
                     <div class="stat-label">Total Expenses</div>
-                    <div class="stat-value">${{ number_format($stats['total'], 2) }}</div>
+                    <div class="stat-value">Rs. {{ number_format($stats['total'], 2) }}</div>
                 </div>
             </div>
         </div>
@@ -22,7 +22,7 @@
                 <div class="stat-icon" style="background:#FFFBEB;"><i class="bi bi-clock-history" style="color:#f59e0b;"></i></div>
                 <div>
                     <div class="stat-label">Pending</div>
-                    <div class="stat-value">${{ number_format($stats['pending'], 2) }}</div>
+                    <div class="stat-value">Rs. {{ number_format($stats['pending'], 2) }}</div>
                 </div>
             </div>
         </div>
@@ -33,7 +33,7 @@
                 <div class="stat-icon" style="background:#F0FFF4;"><i class="bi bi-check-circle" style="color:#22c55e;"></i></div>
                 <div>
                     <div class="stat-label">Approved</div>
-                    <div class="stat-value">${{ number_format($stats['approved'], 2) }}</div>
+                    <div class="stat-value">Rs. {{ number_format($stats['approved'], 2) }}</div>
                 </div>
             </div>
         </div>
@@ -44,7 +44,7 @@
                 <div class="stat-icon" style="background:#FFF0E8;"><i class="bi bi-calendar-month" style="color:#FF6B35;"></i></div>
                 <div>
                     <div class="stat-label">This Month</div>
-                    <div class="stat-value">${{ number_format($stats['this_month'], 2) }}</div>
+                    <div class="stat-value">Rs. {{ number_format($stats['this_month'], 2) }}</div>
                 </div>
             </div>
         </div>
@@ -115,7 +115,7 @@
                         <i class="{{ $catIcons[$expense->category] ?? 'bi-receipt' }} me-1"></i>
                         {{ ucfirst($expense->category) }}
                     </td>
-                    <td class="fw-600 small">${{ number_format($expense->amount, 2) }}</td>
+                    <td class="fw-600 small">Rs. {{ number_format($expense->amount, 2) }}</td>
                     <td class="text-muted small">{{ $expense->expense_date->format('M d, Y') }}</td>
                     <td class="small">{{ $expense->createdBy?->name ?? '—' }}</td>
                     <td>
