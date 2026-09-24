@@ -13,24 +13,14 @@ services:
       - key: APP_DEBUG
         value: false
       - key: APP_KEY
-        generateValue: true
+        value: base64:lvSo0CYqLjM/k7J8YD2t1HA7P06DHbeFoiTmDdrKB+4=
       - key: APP_URL
         sync: false
       - key: DB_CONNECTION
-        value: mysql
-      - key: DB_HOST
-        sync: false
-      - key: DB_PORT
-        value: 3306
-      - key: DB_DATABASE
-        sync: false
-      - key: DB_USERNAME
-        sync: false
-      - key: DB_PASSWORD
-        sync: false
-      - key: RUN_MIGRATIONS
-        value: true
+        value: sqlite
       - key: SESSION_DRIVER
-        value: database
+        value: file
+      - key: CACHE_STORE
+        value: file
       - key: QUEUE_CONNECTION
-        value: database
+        value: sync

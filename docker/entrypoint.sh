@@ -1,41 +1,43 @@
 #!/bin/sh
 set -e
 
-# Default LOG_CHANNEL to stderr if not set so logs appear in platform console
+# Default settings
 export LOG_CHANNEL=${LOG_CHANNEL:-stderr}
+export SESSION_DRIVER=${SESSION_DRIVER:-file}
+export CACHE_STORE=${CACHE_STORE:-file}
 
-# Ensure database directory and SQLite file exist if using SQLite
-if [ "$DB_CONNECTION" = "sqlite" ] || [ -z "$DB_CONNECTION" ]; then
-    mkdir -p /var/www/html/database
-    touch /var/www/html/database/database.sqlite
-    chown -R www-data:www-data /var/www/html/database
+# Fallback APP_KEY if not provided
+if [ -z "$APP_KEY" ]; then
+    export APP_KEY="base64:lvSo0CYqLjM/k7J8YD2t1HA7P06DHbeFoiTmDdrKB+4="
 fi
 
-# Ensure storage and cache directories exist with correct permissions
+# Ensure all storage and cache directories exist with full permissions
 mkdir -p /var/www/html/storage/framework/sessions \
          /var/www/html/storage/framework/views \
-         /var/www/html/storage/framework/cache \
+         /var/www/html/storage/framework/cache/data \
          /var/www/html/storage/logs \
-         /var/www/html/bootstrap/cache
+         /var/www/html/bootstrap/cache \
+         /var/www/html/database
 
-chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
-chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
-
-# Generate APP_KEY if not already set
-if [ -z "$APP_KEY" ]; then
-    echo "APP_KEY is empty. Generating key..."
-    php artisan key:generate --force || true
+# Ensure SQLite file exists if using SQLite
+if [ "$DB_CONNECTION" = "sqlite" ] || [ -z "$DB_CONNECTION" ]; then
+    touch /var/www/html/database/database.sqlite
 fi
+
+chmod -R 777 /var/www/html/storage /var/www/html/bootstrap/cache /var/www/html/database
+chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache /var/www/html/database
 
 # Link storage
 php artisan storage:link || true
 
-# Run database migrations
-echo "Running database migrations..."
+# Run database migrations safely
+echo "Checking database and running migrations..."
 php artisan migrate --force || true
 
-# Clear and rebuild cache
+# Clear all previous caches
 php artisan optimize:clear || true
+
+# Cache configs
 if [ "$APP_ENV" = "production" ]; then
     echo "Caching Laravel configuration..."
     php artisan config:cache || true
@@ -43,7 +45,7 @@ if [ "$APP_ENV" = "production" ]; then
     php artisan view:cache || true
 fi
 
-# Configure Nginx port dynamically
+# Configure Nginx port dynamically (Render default is 10000, Koyeb is 8080)
 PORT=${PORT:-8080}
 echo "Configuring Nginx to listen on port ${PORT}..."
 sed -i "s/listen 8080;/listen ${PORT};/g" /etc/nginx/http.d/default.conf
