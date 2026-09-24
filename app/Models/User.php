@@ -4,16 +4,26 @@ namespace App\Models;
 
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
-use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Models\Permission;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
-use Kyslik\ColumnSortable\Sortable;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles, TwoFactorAuthenticatable;
+
+    protected static function booted()
+    {
+        static::creating(function ($user) {
+            if (empty($user->username)) {
+                $base = !empty($user->email) ? explode('@', $user->email)[0] : Str::slug($user->name ?: 'user');
+                $user->username = Str::slug($base) . '_' . Str::lower(Str::random(4));
+            }
+        });
+    }
 
     /**
      * The attributes that are mass assignable.
