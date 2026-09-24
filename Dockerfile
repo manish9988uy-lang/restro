@@ -13,7 +13,7 @@ RUN npm run build
 # ==========================================
 # Stage 2: PHP + Nginx Production Runtime
 # ==========================================
-FROM php:8.3-fpm-alpine
+FROM php:8.4-fpm-alpine
 
 # Install system dependencies and Nginx
 RUN apk add --no-cache \
@@ -49,7 +49,6 @@ RUN echo "clear_env = no" >> /usr/local/etc/php-fpm.d/www.conf \
     && echo "php_admin_flag[log_errors] = on" >> /usr/local/etc/php-fpm.d/www.conf \
     && echo "php_admin_value[error_log] = /proc/self/fd/2" >> /usr/local/etc/php-fpm.d/www.conf
 
-
 # Install Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
@@ -62,7 +61,8 @@ COPY . /var/www/html
 COPY --from=frontend /app/public/build /var/www/html/public/build
 
 # Install PHP production dependencies
-RUN composer install --no-dev --optimize-autoloader --no-interaction
+RUN composer install --no-dev --optimize-autoloader --no-interaction --ignore-platform-req=php+
+
 
 # Copy Nginx config & Entrypoint script
 COPY docker/nginx.conf /etc/nginx/http.d/default.conf
