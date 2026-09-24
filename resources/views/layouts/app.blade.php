@@ -8,10 +8,11 @@
 
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <!-- Bootstrap Icons -->
+    <!-- Bootstrap Icons & FontAwesome -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 
     <style>
         :root {
@@ -23,7 +24,8 @@
             --topbar-height: 64px;
             --sidebar-width: 260px;
         }
-        * { font-family: 'Inter', sans-serif; }
+        * { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; }
+        i.bi, i.fa, i.fas, i.far { display: inline-flex; align-items: center; justify-content: center; line-height: 1; vertical-align: middle; }
         body { background: #f4f6fb; color: #2d3149; }
 
         /* Sidebar */
