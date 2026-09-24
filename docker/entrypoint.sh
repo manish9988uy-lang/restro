@@ -30,9 +30,10 @@ chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache /
 # Link storage
 php artisan storage:link || true
 
-# Run database migrations safely
-echo "Checking database and running migrations..."
+# Run database migrations and seeders safely
+echo "Checking database, running migrations and seeders..."
 php artisan migrate --force || true
+php artisan db:seed --force || true
 
 # Clear all previous caches
 php artisan optimize:clear || true
