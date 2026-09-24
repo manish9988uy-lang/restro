@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('stock_transfers', function (Blueprint $table) {
-            $table->foreignId('from_branch_id')->nullable()->constrained('branches')->nullOnDelete();
-            $table->foreignId('to_branch_id')->nullable()->constrained('branches')->nullOnDelete();
-            $table->string('status')->default('pending'); // pending, completed, canceled
-        });
+        if (Schema::hasTable('stock_transfers')) {
+            Schema::table('stock_transfers', function (Blueprint $table) {
+                $table->foreignId('from_branch_id')->nullable()->constrained('branches')->nullOnDelete();
+                $table->foreignId('to_branch_id')->nullable()->constrained('branches')->nullOnDelete();
+                $table->string('status')->default('pending'); // pending, completed, canceled
+            });
+        }
     }
 
     /**
@@ -23,12 +25,14 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('stock_transfers', function (Blueprint $table) {
-            $table->dropForeign(['from_branch_id']);
-            $table->dropColumn('from_branch_id');
-            $table->dropForeign(['to_branch_id']);
-            $table->dropColumn('to_branch_id');
-            $table->dropColumn('status');
-        });
+        if (Schema::hasTable('stock_transfers')) {
+            Schema::table('stock_transfers', function (Blueprint $table) {
+                $table->dropForeign(['from_branch_id']);
+                $table->dropColumn('from_branch_id');
+                $table->dropForeign(['to_branch_id']);
+                $table->dropColumn('to_branch_id');
+                $table->dropColumn('status');
+            });
+        }
     }
 };

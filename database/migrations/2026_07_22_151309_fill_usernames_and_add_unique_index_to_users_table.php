@@ -27,10 +27,14 @@ return new class extends Migration
             $user->save();
         });
 
-        // Now add unique index
-        Schema::table('users', function (Blueprint $table) {
-            $table->unique('username');
-        });
+        // Now add unique index safely if not already present
+        try {
+            Schema::table('users', function (Blueprint $table) {
+                $table->unique('username');
+            });
+        } catch (\Throwable $e) {
+            // Index already exists
+        }
     }
 
     /**
@@ -38,8 +42,12 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropUnique(['username']);
-        });
+        try {
+            Schema::table('users', function (Blueprint $table) {
+                $table->dropUnique(['username']);
+            });
+        } catch (\Throwable $e) {
+            // Ignore if index doesn't exist
+        }
     }
 };
