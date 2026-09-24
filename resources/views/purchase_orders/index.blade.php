@@ -147,7 +147,7 @@
                                 <input type="number" step="0.001" name="items[0][quantity]" class="form-control qty-input" placeholder="Qty" required>
                             </div>
                             <div class="col-md-3">
-                                <input type="number" step="0.01" name="items[0][unit_price]" class="form-control price-input" placeholder="Unit Cost ($)" required>
+                                <input type="number" step="0.01" name="items[0][unit_price]" class="form-control price-input" placeholder="Unit Cost (Rs.)" required>
                             </div>
                             <div class="col-md-1">
                                 <button type="button" class="btn btn-outline-danger w-100 remove-row-btn"><i class="bi bi-x"></i></button>
@@ -193,7 +193,7 @@
                 <input type="number" step="0.001" name="items[${poIndex}][quantity]" class="form-control qty-input" placeholder="Qty" required>
             </div>
             <div class="col-md-3">
-                <input type="number" step="0.01" name="items[${poIndex}][unit_price]" class="form-control price-input" placeholder="Unit Cost ($)" required>
+                <input type="number" step="0.01" name="items[${poIndex}][unit_price]" class="form-control price-input" placeholder="Unit Cost (Rs.)" required>
             </div>
             <div class="col-md-1">
                 <button type="button" class="btn btn-outline-danger w-100 remove-row-btn"><i class="bi bi-x"></i></button>

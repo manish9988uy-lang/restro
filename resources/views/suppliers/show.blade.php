@@ -128,7 +128,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label class="form-label fw-medium">Payment Amount ($) *</label>
+                        <label class="form-label fw-medium">Payment Amount (Rs.) *</label>
                         <input type="number" step="0.01" name="amount" class="form-control fs-5 fw-bold text-success" value="{{ $supplier->credit_balance }}" required>
                     </div>
                     <div class="row g-2 mb-3">

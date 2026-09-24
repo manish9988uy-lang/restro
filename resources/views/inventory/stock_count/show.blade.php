@@ -26,8 +26,8 @@
                         <th>System Stock</th>
                         <th>Physical Counted</th>
                         <th>Variance (Qty)</th>
-                        <th>Unit Cost ($)</th>
-                        <th class="pe-4 text-end">Variance Value ($)</th>
+                        <th>Unit Cost (Rs.)</th>
+                        <th class="pe-4 text-end">Variance Value (Rs.)</th>
                     </tr>
                 </thead>
                 <tbody>

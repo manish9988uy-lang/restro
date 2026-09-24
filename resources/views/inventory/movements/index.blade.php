@@ -52,8 +52,8 @@
                         <th>Ingredient</th>
                         <th>Movement Type</th>
                         <th>Quantity</th>
-                        <th>Unit Cost ($)</th>
-                        <th>Total Cost ($)</th>
+                        <th>Unit Cost (Rs.)</th>
+                        <th>Total Cost (Rs.)</th>
                         <th>Reference</th>
                         <th>User</th>
                         <th class="pe-4">Notes</th>

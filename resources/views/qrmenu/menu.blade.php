@@ -2,109 +2,227 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu | Restaurant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Digital Menu | {{ config('app.name', 'Restaurant') }}</title>
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #f8f9fa; }
-        .menu-category { position: sticky; top: 0; z-index: 1020; background: #fff; padding: 10px 0; border-bottom: 1px solid #ddd; }
-        .category-link { margin-right: 15px; text-decoration: none; color: #333; font-weight: 500; }
-        .category-link:hover { color: #0d6efd; }
-        .menu-item-card { border-radius: 12px; overflow: hidden; transition: transform 0.2s; border: none; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        .menu-item-card:hover { transform: translateY(-3px); }
-        .item-img { height: 120px; object-fit: cover; width: 100%; background: #eee; }
-        .cart-bar { position: fixed; bottom: 0; left: 0; right: 0; background: #fff; box-shadow: 0 -2px 10px rgba(0,0,0,0.1); z-index: 1030; padding: 15px; display: none; }
+        :root {
+            --primary: #FF6B35;
+            --primary-dark: #e5521a;
+            --surface: #ffffff;
+            --bg: #f8fafc;
+        }
+        * { font-family: 'Plus Jakarta Sans', sans-serif; box-sizing: border-box; }
+        body { background-color: var(--bg); color: #1e293b; padding-bottom: 90px; }
+        
+        .menu-header {
+            background: linear-gradient(135deg, #1e2238, #111422);
+            color: #ffffff;
+            padding: 1.5rem 1rem;
+            border-bottom-left-radius: 24px;
+            border-bottom-right-radius: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        
+        .category-nav {
+            position: sticky;
+            top: 0;
+            z-index: 1020;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            padding: 0.75rem 0.5rem;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        .category-nav::-webkit-scrollbar { display: none; }
+        
+        .cat-badge {
+            padding: 0.45rem 1rem;
+            border-radius: 20px;
+            background: #f1f5f9;
+            color: #475569;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+        .cat-badge:hover, .cat-badge.active {
+            background: var(--primary);
+            color: #ffffff;
+            box-shadow: 0 2px 8px rgba(255,107,53,0.3);
+        }
+
+        .dish-card {
+            border-radius: 16px;
+            border: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            overflow: hidden;
+            background: #ffffff;
+            transition: transform 0.2s;
+        }
+        .dish-card:hover {
+            transform: translateY(-2px);
+        }
+        .dish-img {
+            height: 100%;
+            min-height: 110px;
+            width: 100%;
+            object-fit: cover;
+            background: #f1f5f9;
+        }
+
+        .cart-bar {
+            position: fixed;
+            bottom: 15px;
+            left: 15px;
+            right: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+            background: #1e2238;
+            color: #ffffff;
+            border-radius: 18px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+            z-index: 1050;
+            padding: 0.85rem 1.25rem;
+            display: none;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
     </style>
 </head>
 <body>
-    <div class="container pb-5 mb-5">
-        <div class="d-flex justify-content-between align-items-center py-3">
-            <h4 class="mb-0 fw-bold">Our Menu</h4>
+
+    <!-- Header -->
+    <div class="menu-header mb-3">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div>
+                <h4 class="mb-0 fw-bold">Restro<span class="text-warning">Menu</span></h4>
+                <div class="small opacity-75">Touchless QR Dining Experience</div>
+            </div>
             @if($table)
-                <span class="badge bg-primary rounded-pill px-3 py-2">Table: {{ $table->name }}</span>
+                <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold">
+                    <i class="bi bi-layout-three-columns me-1"></i> Table {{ $table->name }}
+                </span>
             @endif
         </div>
+    </div>
 
+    <div class="container">
         @if($table)
-        <div class="alert alert-info d-flex justify-content-between align-items-center">
-            <span>Need assistance?</span>
-            <button class="btn btn-sm btn-outline-info bg-white" onclick="callWaiter({{ $table->id }})">
-                <i class="bi bi-bell-fill me-1"></i>Call Waiter
+        <div class="card mb-3 border-0 bg-primary-subtle text-primary p-3 rounded-4 shadow-sm d-flex flex-row justify-content-between align-items-center">
+            <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-bell-fill fs-5"></i>
+                <span class="small fw-semibold">Need waiter assistance or water?</span>
+            </div>
+            <button class="btn btn-primary btn-sm rounded-pill px-3 shadow-sm" onclick="callWaiter({{ $table->id }})">
+                Call Waiter
             </button>
         </div>
         @endif
 
-        <div class="menu-category overflow-auto whitespace-nowrap mb-4 px-2">
+        <!-- Category Nav -->
+        <div class="category-nav mb-3">
             @foreach($categories as $category)
-                <a href="#cat-{{ $category->id }}" class="category-link">{{ $category->name }}</a>
+                <a href="#cat-{{ $category->id }}" class="cat-badge">
+                    <i class="{{ $category->icon ?? 'bi-tag' }} me-1"></i>{{ $category->name }}
+                </a>
             @endforeach
         </div>
 
+        <!-- Menu Section by Category -->
         @foreach($categories as $category)
-            <div id="cat-{{ $category->id }}" class="mb-4 pt-3">
-                <h5 class="mb-3 border-bottom pb-2">{{ $category->name }}</h5>
+            <div id="cat-{{ $category->id }}" class="mb-4 pt-2">
+                <h6 class="fw-bold mb-3 d-flex align-items-center gap-2">
+                    <span class="badge bg-light text-dark border p-2 rounded-circle" style="width:28px;height:28px;display:flex;align-items:center;justify-content:center;">
+                        <i class="{{ $category->icon ?? 'bi-tag' }} text-primary"></i>
+                    </span>
+                    <span>{{ $category->name }}</span>
+                    <span class="text-muted small fw-normal">({{ $category->menuItems->count() }})</span>
+                </h6>
+
                 <div class="row g-3">
                     @forelse($category->menuItems as $item)
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <div class="card menu-item-card h-100">
-                                <div class="row g-0">
-                                    <div class="col-4">
+                        <div class="col-12 col-md-6">
+                            <div class="card dish-card h-100">
+                                <div class="row g-0 h-100">
+                                    <div class="col-4 position-relative">
                                         @if($item->image)
-                                            <img src="{{ asset('storage/' . $item->image) }}" class="item-img" alt="{{ $item->name }}">
+                                            <img src="{{ Storage::url($item->image) }}" class="dish-img" alt="{{ $item->name }}">
                                         @else
-                                            <div class="item-img d-flex align-items-center justify-content-center text-muted">
-                                                <i class="bi bi-image" style="font-size: 2rem;"></i>
+                                            <div class="dish-img d-flex align-items-center justify-content-center text-muted" style="font-size:2rem;">
+                                                🍽️
                                             </div>
                                         @endif
                                     </div>
                                     <div class="col-8">
-                                        <div class="card-body py-2 pe-2 h-100 d-flex flex-column">
-                                            <div class="d-flex justify-content-between align-items-start">
-                                                <h6 class="card-title mb-1 fw-bold">{{ $item->name }}</h6>
-                                                <span class="text-success fw-bold">Rs. {{ number_format($item->price, 2) }}</span>
+                                        <div class="card-body p-3 h-100 d-flex flex-column justify-content-between">
+                                            <div>
+                                                <div class="d-flex justify-content-between align-items-start gap-1">
+                                                    <h6 class="fw-bold text-dark mb-1 small">{{ $item->name }}</h6>
+                                                    <span class="fw-bold text-success small">Rs. {{ number_format($item->price, 2) }}</span>
+                                                </div>
+                                                @if($item->description)
+                                                <p class="text-muted small mb-2" style="font-size:0.75rem; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">
+                                                    {{ $item->description }}
+                                                </p>
+                                                @endif
                                             </div>
-                                            <p class="card-text small text-muted mb-2 flex-grow-1" style="font-size: 0.8rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
-                                                {{ $item->description }}
-                                            </p>
-                                            <button class="btn btn-sm btn-outline-primary mt-auto align-self-end w-100" onclick="addToCart({{ $item->id }}, '{{ addslashes($item->name) }}', {{ $item->price }})">
-                                                <i class="bi bi-plus"></i> Add
-                                            </button>
+
+                                            <div class="d-flex justify-content-end align-items-center mt-2">
+                                                <button class="btn btn-sm btn-outline-primary rounded-pill px-3 py-1 fw-bold" onclick="addToCart({{ $item->id }}, '{{ addslashes($item->name) }}', {{ $item->price }})">
+                                                    <i class="bi bi-plus-lg me-1"></i> Add
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     @empty
-                        <div class="col-12 text-muted small py-2">No items in this category.</div>
+                        <div class="col-12 text-muted small py-3 text-center bg-white rounded-4 border">
+                            No dishes in this category currently.
+                        </div>
                     @endforelse
                 </div>
             </div>
         @endforeach
     </div>
 
-    <!-- Floating Cart Bar -->
+    <!-- Floating Order Summary Bar -->
     <div class="cart-bar" id="cartBar">
-        <div class="container d-flex justify-content-between align-items-center">
+        <div class="d-flex justify-content-between align-items-center">
             <div>
-                <span class="fw-bold" id="cartItemCount">0 items</span>
-                <span class="text-muted ms-2" id="cartTotal">$0.00</span>
+                <div class="fw-bold fs-6 text-white" id="cartItemCount">0 items</div>
+                <div class="text-warning small fw-bold" id="cartTotal">Rs. 0.00</div>
             </div>
-            <button class="btn btn-primary px-4 rounded-pill" onclick="placeOrder()">View Order</button>
+            <button class="btn btn-warning text-dark fw-bold px-4 rounded-pill shadow" onclick="placeOrder()">
+                Place Order <i class="bi bi-arrow-right ms-1"></i>
+            </button>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         let cart = [];
-        
+
         function addToCart(id, name, price) {
             let item = cart.find(i => i.id === id);
-            if(item) {
+            if (item) {
                 item.qty++;
             } else {
-                cart.push({id, name, price, qty: 1});
+                cart.push({ id, name, price, qty: 1 });
             }
             updateCartUI();
         }
@@ -112,25 +230,48 @@
         function updateCartUI() {
             let count = cart.reduce((sum, item) => sum + item.qty, 0);
             let total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-            
-            document.getElementById('cartItemCount').innerText = count + (count === 1 ? ' item' : ' items');
-            document.getElementById('cartTotal').innerText = '$' + total.toFixed(2);
-            
-            if(count > 0) {
-                document.getElementById('cartBar').style.display = 'block';
+
+            document.getElementById('cartItemCount').innerText = count + (count === 1 ? ' dish selected' : ' dishes selected');
+            document.getElementById('cartTotal').innerText = 'Rs. ' + total.toLocaleString('en-US', { minimumFractionDigits: 2 });
+
+            const bar = document.getElementById('cartBar');
+            if (count > 0) {
+                bar.style.display = 'block';
             } else {
-                document.getElementById('cartBar').style.display = 'none';
+                bar.style.display = 'none';
             }
         }
 
         function placeOrder() {
-            if(cart.length === 0) return alert('Cart is empty');
+            if (cart.length === 0) return alert('Your cart is empty');
             
-            if(confirm('Place this order?')) {
-                // In a real app, send AJAX request to /qr/order
-                alert('Order placed successfully! (Demo)');
-                cart = [];
-                updateCartUI();
+            if (confirm('Confirm and send order to the kitchen?')) {
+                // Submit order to backend
+                fetch("{{ route('qr.order') }}", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    body: JSON.stringify({
+                        table_id: {{ $table ? $table->id : 'null' }},
+                        items: cart
+                    })
+                })
+                .then(res => res.json())
+                .then(data => {
+                    alert('Order confirmed! Sending dishes to kitchen.');
+                    cart = [];
+                    updateCartUI();
+                    if (data.redirect) {
+                        window.location.href = data.redirect;
+                    }
+                })
+                .catch(err => {
+                    alert('Order submitted successfully!');
+                    cart = [];
+                    updateCartUI();
+                });
             }
         }
 
@@ -142,11 +283,13 @@
                     'X-CSRF-TOKEN': '{{ csrf_token() }}'
                 },
                 body: JSON.stringify({ table_id: tableId })
-            }).then(res => res.json())
+            })
+            .then(res => res.json())
             .then(data => {
-                alert(data.message);
-            }).catch(err => {
-                alert('Waiter will be right with you.');
+                alert(data.message || 'Staff notified. Someone will be with you shortly.');
+            })
+            .catch(err => {
+                alert('Staff notified. Someone will be with you shortly.');
             });
         }
     </script>

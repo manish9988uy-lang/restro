@@ -89,8 +89,8 @@
                         <th>Ingredient Name</th>
                         <th>Current Stock</th>
                         <th>Alert Threshold</th>
-                        <th>Unit Cost ($)</th>
-                        <th>Stock Value ($)</th>
+                        <th>Unit Cost (Rs.)</th>
+                        <th>Stock Value (Rs.)</th>
                         <th>Location</th>
                         <th>Status</th>
                         <th class="pe-4 text-end">Actions</th>
@@ -170,7 +170,7 @@
                                                 <input type="number" step="0.001" name="alert_threshold" class="form-control" value="{{ $ing->alert_threshold }}" required>
                                             </div>
                                             <div class="col-6">
-                                                <label class="form-label fw-medium">Unit Cost ($) *</label>
+                                                <label class="form-label fw-medium">Unit Cost (Rs.) *</label>
                                                 <input type="number" step="0.01" name="cost_per_unit" class="form-control" value="{{ $ing->cost_per_unit }}" required>
                                             </div>
                                         </div>
@@ -245,7 +245,7 @@
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label fw-medium">Cost per Unit ($) *</label>
+                        <label class="form-label fw-medium">Cost per Unit (Rs.) *</label>
                         <input type="number" step="0.01" name="cost_per_unit" class="form-control" value="0.00" required>
                     </div>
                     <div class="mb-3">

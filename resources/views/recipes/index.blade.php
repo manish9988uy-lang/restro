@@ -59,8 +59,8 @@
                     <tr>
                         <th class="ps-4">Menu Item</th>
                         <th>Category</th>
-                        <th>Selling Price ($)</th>
-                        <th>Calculated Cost ($)</th>
+                        <th>Selling Price (Rs.)</th>
+                        <th>Calculated Cost (Rs.)</th>
                         <th>Profit Margin (%)</th>
                         <th>Ingredients Count</th>
                         <th>Yield</th>

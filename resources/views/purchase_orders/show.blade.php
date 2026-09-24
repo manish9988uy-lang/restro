@@ -69,8 +69,8 @@
                                 <th>Ingredient</th>
                                 <th>Unit</th>
                                 <th>Quantity</th>
-                                <th>Unit Price ($)</th>
-                                <th class="text-end">Subtotal ($)</th>
+                                <th>Unit Price (Rs.)</th>
+                                <th class="text-end">Subtotal (Rs.)</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -181,13 +181,13 @@
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label class="form-label fw-medium">Remaining Due ($)</label>
+                        <label class="form-label fw-medium">Remaining Due (Rs.)</label>
                         <div class="form-control bg-light fw-bold text-danger">
                             Rs. {{ number_format($purchaseOrder->total_amount - $purchaseOrder->paid_amount, 2) }}
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label fw-medium">Payment Amount ($) *</label>
+                        <label class="form-label fw-medium">Payment Amount (Rs.) *</label>
                         <input type="number" step="0.01" name="amount" class="form-control fs-5 fw-bold text-success" value="{{ $purchaseOrder->total_amount - $purchaseOrder->paid_amount }}" required>
                     </div>
                     <div class="row g-2 mb-3">

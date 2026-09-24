@@ -52,7 +52,7 @@
                             </select>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label small fw-600">Delivery Fee ($)</label>
+                            <label class="form-label small fw-600">Delivery Fee (Rs.)</label>
                             <div class="input-group">
                                 <span class="input-group-text">$</span>
                                 <input type="number" name="delivery_fee" id="deliveryFee" step="0.01" min="0" class="form-control" value="{{ old('delivery_fee') }}">

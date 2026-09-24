@@ -41,7 +41,7 @@
                         </div>
 
                         <div class="col-md-4">
-                            <label class="form-label small fw-600">Selling Price ($) <span class="text-danger">*</span></label>
+                            <label class="form-label small fw-600">Selling Price (Rs.) <span class="text-danger">*</span></label>
                             <div class="input-group">
                                 <span class="input-group-text">$</span>
                                 <input type="number" name="price" step="0.01" min="0"
@@ -51,7 +51,7 @@
                             @error('price')<div class="invalid-feedback d-block">{{ $message }}</div>@enderror
                         </div>
                         <div class="col-md-4">
-                            <label class="form-label small fw-600">Cost Price ($)</label>
+                            <label class="form-label small fw-600">Cost Price (Rs.)</label>
                             <div class="input-group">
                                 <span class="input-group-text">$</span>
                                 <input type="number" name="cost_price" step="0.01" min="0"

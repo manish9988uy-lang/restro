@@ -28,7 +28,7 @@
                             @error('category')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         </div>
                         <div class="col-md-4">
-                            <label class="form-label small fw-600">Amount ($) <span class="text-danger">*</span></label>
+                            <label class="form-label small fw-600">Amount (Rs.) <span class="text-danger">*</span></label>
                             <div class="input-group">
                                 <span class="input-group-text">$</span>
                                 <input type="number" name="amount" step="0.01" min="0"

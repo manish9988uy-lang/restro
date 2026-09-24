@@ -131,9 +131,9 @@
                     <tr>
                         <th class="ps-4">Date</th>
                         <th>Orders Count</th>
-                        <th>VAT Collected ($)</th>
-                        <th>Discounts ($)</th>
-                        <th class="pe-4 text-end">Total Revenue ($)</th>
+                        <th>VAT Collected (Rs.)</th>
+                        <th>Discounts (Rs.)</th>
+                        <th class="pe-4 text-end">Total Revenue (Rs.)</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -165,7 +165,7 @@
                         <tr>
                             <th class="ps-3">Category</th>
                             <th>Qty Sold</th>
-                            <th class="pe-3 text-end">Revenue ($)</th>
+                            <th class="pe-3 text-end">Revenue (Rs.)</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -190,7 +190,7 @@
                         <tr>
                             <th class="ps-3">Product Name</th>
                             <th>Qty Sold</th>
-                            <th class="pe-3 text-end">Revenue ($)</th>
+                            <th class="pe-3 text-end">Revenue (Rs.)</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -274,7 +274,7 @@
                             <th class="ps-3">Customer</th>
                             <th>Completed Visits</th>
                             <th>Tier</th>
-                            <th class="pe-3 text-end">Total Spent ($)</th>
+                            <th class="pe-3 text-end">Total Spent (Rs.)</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -301,7 +301,7 @@
                             <th class="ps-3">Employee</th>
                             <th>Role</th>
                             <th>Orders Placed</th>
-                            <th class="pe-3 text-end">Sales ($)</th>
+                            <th class="pe-3 text-end">Sales (Rs.)</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -365,7 +365,7 @@
                     <thead class="bg-light">
                         <tr>
                             <th class="ps-3">Category</th>
-                            <th class="pe-3 text-end">Total ($)</th>
+                            <th class="pe-3 text-end">Total (Rs.)</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -429,9 +429,9 @@
                     <tr>
                         <th>Invoice</th>
                         <th>Date</th>
-                        <th>Subtotal ($)</th>
-                        <th>VAT ($)</th>
-                        <th>Total ($)</th>
+                        <th>Subtotal (Rs.)</th>
+                        <th>VAT (Rs.)</th>
+                        <th>Total (Rs.)</th>
                     </tr>
                 </thead>
                 <tbody>

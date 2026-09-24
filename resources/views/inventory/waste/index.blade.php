@@ -65,8 +65,8 @@
                         <th class="ps-4">Date Logged</th>
                         <th>Ingredient</th>
                         <th>Wasted Qty</th>
-                        <th>Unit Cost ($)</th>
-                        <th>Total Loss ($)</th>
+                        <th>Unit Cost (Rs.)</th>
+                        <th>Total Loss (Rs.)</th>
                         <th>Reason</th>
                         <th>Logged By</th>
                         <th class="pe-4 text-end">Action</th>

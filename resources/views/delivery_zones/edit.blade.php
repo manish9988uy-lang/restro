@@ -23,7 +23,7 @@
                             @error('name')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         </div>
                         <div class="col-md-3">
-                            <label class="form-label small fw-600">Base Fee ($) <span class="text-danger">*</span></label>
+                            <label class="form-label small fw-600">Base Fee (Rs.) <span class="text-danger">*</span></label>
                             <div class="input-group">
                                 <span class="input-group-text">$</span>
                                 <input type="number" name="base_fee" step="0.01" min="0" class="form-control @error('base_fee') is-invalid @enderror" value="{{ old('base_fee', $deliveryZone->base_fee) }}" required>
@@ -31,7 +31,7 @@
                             @error('base_fee')<div class="invalid-feedback d-block">{{ $message }}</div>@enderror
                         </div>
                         <div class="col-md-3">
-                            <label class="form-label small fw-600">Min Order ($)</label>
+                            <label class="form-label small fw-600">Min Order (Rs.)</label>
                             <div class="input-group">
                                 <span class="input-group-text">$</span>
                                 <input type="number" name="min_order" step="0.01" min="0" class="form-control" value="{{ old('min_order', $deliveryZone->min_order) }}">
