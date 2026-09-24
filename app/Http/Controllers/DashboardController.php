@@ -25,10 +25,14 @@ class DashboardController extends Controller
         $totalTables    = RestaurantTable::count();
         $pendingOrders  = Order::whereIn('order_status', ['pending', 'preparing'])->count();
 
+        $driver = DB::getDriverName();
+        $dateExpr = $driver === 'sqlite' ? "strftime('%Y-%m-%d', created_at)" : "DATE(created_at)";
+        $hourExpr = $driver === 'sqlite' ? "CAST(strftime('%H', created_at) AS INTEGER)" : "HOUR(created_at)";
+
         // Revenue last 7 days
         $revenueChart = Order::where('order_status', 'completed')
             ->where('created_at', '>=', now()->subDays(6))
-            ->selectRaw('DATE(created_at) as date, SUM(total) as total')
+            ->selectRaw("{$dateExpr} as date, SUM(total) as total")
             ->groupBy('date')
             ->orderBy('date')
             ->pluck('total', 'date');
@@ -91,7 +95,7 @@ class DashboardController extends Controller
 
         // Customer growth (last 7 days)
         $customerGrowth = DB::table('customers')
-            ->selectRaw('DATE(created_at) as date, COUNT(*) as count')
+            ->selectRaw("{$dateExpr} as date, COUNT(*) as count")
             ->where('created_at', '>=', now()->subDays(6))
             ->groupBy('date')
             ->orderBy('date')
@@ -100,7 +104,7 @@ class DashboardController extends Controller
 
         // Peak hours (last 7 days)
         $peakHours = Order::where('created_at', '>=', now()->subDays(6))
-            ->selectRaw('HOUR(created_at) as hour, COUNT(*) as count')
+            ->selectRaw("{$hourExpr} as hour, COUNT(*) as count")
             ->groupBy('hour')
             ->orderBy('hour')
             ->pluck('count', 'hour')

@@ -37,23 +37,29 @@ class ReportController extends Controller
             };
         }
 
+        $driver = DB::getDriverName();
+        $dateExpr = $driver === 'sqlite' ? "strftime('%Y-%m-%d', created_at)" : "DATE(created_at)";
+
         $completedOrders = Order::where('order_status', 'completed')
-            ->whereBetween(DB::raw('DATE(created_at)'), [$from, $to]);
+            ->whereDate('created_at', '>=', $from)
+            ->whereDate('created_at', '<=', $to);
 
         // Key KPI metrics
         $totalRevenue    = (clone $completedOrders)->sum('total');
-        $totalOrders     = Order::whereBetween(DB::raw('DATE(created_at)'), [$from, $to])->count();
+        $totalOrders     = Order::whereDate('created_at', '>=', $from)->whereDate('created_at', '<=', $to)->count();
         $completedCount  = (clone $completedOrders)->count();
         $cancelledCount  = Order::where('order_status', 'cancelled')
-            ->whereBetween(DB::raw('DATE(created_at)'), [$from, $to])->count();
+            ->whereDate('created_at', '>=', $from)
+            ->whereDate('created_at', '<=', $to)->count();
         $avgOrderValue   = $completedCount > 0 ? round($totalRevenue / $completedCount, 2) : 0;
         $totalVat        = (clone $completedOrders)->sum('vat');
         $totalDiscount   = (clone $completedOrders)->sum('discount');
 
         // 9.3 Sales breakdown (Daily, Weekly, Monthly)
         $salesTrend = Order::where('order_status', 'completed')
-            ->whereBetween(DB::raw('DATE(created_at)'), [$from, $to])
-            ->selectRaw('DATE(created_at) as date, COUNT(*) as orders, SUM(total) as revenue, SUM(vat) as vat, SUM(discount) as discount')
+            ->whereDate('created_at', '>=', $from)
+            ->whereDate('created_at', '<=', $to)
+            ->selectRaw("{$dateExpr} as date, COUNT(*) as orders, SUM(total) as revenue, SUM(vat) as vat, SUM(discount) as discount")
             ->groupBy('date')
             ->orderBy('date')
             ->get();
