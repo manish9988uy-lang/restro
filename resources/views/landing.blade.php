@@ -548,7 +548,7 @@
                     <h5 class="fw-bold text-dark mb-1">Starter</h5>
                     <p class="text-muted small mb-3">Ideal for small cafes & food trucks</p>
                     <div class="d-flex align-items-baseline gap-1 mb-4">
-                        <span class="display-6 fw-bold text-dark">$29</span>
+                        <span class="display-6 fw-bold text-dark">NPR 2,999</span>
                         <span class="text-muted">/ month</span>
                     </div>
 
@@ -586,7 +586,7 @@
                     <h5 class="fw-bold text-dark mb-1">Professional</h5>
                     <p class="text-muted small mb-3">For bustling dining restaurants</p>
                     <div class="d-flex align-items-baseline gap-1 mb-4">
-                        <span class="display-6 fw-bold text-dark">$79</span>
+                        <span class="display-6 fw-bold text-dark">NPR 6,999</span>
                         <span class="text-muted">/ month</span>
                     </div>
 
@@ -625,7 +625,7 @@
                     <h5 class="fw-bold text-dark mb-1">Enterprise</h5>
                     <p class="text-muted small mb-3">For regional restaurant chains & franchises</p>
                     <div class="d-flex align-items-baseline gap-1 mb-4">
-                        <span class="display-6 fw-bold text-dark">$199</span>
+                        <span class="display-6 fw-bold text-dark">NPR 14,999</span>
                         <span class="text-muted">/ month</span>
                     </div>
 
