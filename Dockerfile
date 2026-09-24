@@ -42,6 +42,14 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
         intl \
         opcache
 
+# Configure PHP-FPM to pass environment variables to workers and forward logs
+RUN echo "clear_env = no" >> /usr/local/etc/php-fpm.d/www.conf \
+    && echo "catch_workers_output = yes" >> /usr/local/etc/php-fpm.d/www.conf \
+    && echo "decorate_workers_output = no" >> /usr/local/etc/php-fpm.d/www.conf \
+    && echo "php_admin_flag[log_errors] = on" >> /usr/local/etc/php-fpm.d/www.conf \
+    && echo "php_admin_value[error_log] = /proc/self/fd/2" >> /usr/local/etc/php-fpm.d/www.conf
+
+
 # Install Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
